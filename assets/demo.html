@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>es6</title>
+</head>
+
+<body>
+    <script type='text/javascript'>
+        function setupWebViewJavascriptBridge(callback) {
+            if (window.WebViewJavascriptBridge) { return callback(WebViewJavascriptBridge); }
+            if (window.WVJBCallbacks) { return window.WVJBCallbacks.push(callback); }
+            window.WVJBCallbacks = [callback];
+
+            //只对ios有效
+            var WVJBIframe = document.createElement('iframe');
+            WVJBIframe.style.display = 'none';
+            WVJBIframe.src = 'https://__bridge_loaded__';
+            document.documentElement.appendChild(WVJBIframe);
+            setTimeout(function () { document.documentElement.removeChild(WVJBIframe) }, 0)
+        }
+        setupWebViewJavascriptBridge(function (bridge) {
+            console.log('setupWebViewJavascriptBridge done');
+            //app注册调用js的回调,如果没有指定key（app 调用 js）
+            bridge.init(function (data, responseCallback) {
+                console.log(data);
+                var res = 'defaultHandler res from js';
+                responseCallback(res);
+            });
+            //接收手机端回调回来的token
+            bridge.registerHandler('getToken', function (data, responseCallback) {
+                console.log("getToken get data ", data);
+                responseCallback(data);
+            });
+            //接收手机端回调回来的图片参数
+            bridge.registerHandler('chooseImage', function (data, responseCallback) {
+                console.log("chooseImage get data ", data);
+                responseCallback(data);
+            });
+            bridge.registerHandler('location', function (data, responseCallback) {
+                console.log("location get data ", data);
+                responseCallback(data);
+            });
+        });
+
+        if (window.WebViewJavascriptBridge) {
+            console.log('WebViewJavascriptBridge done when body load');
+        } else {
+            document.addEventListener(
+                'WebViewJavascriptBridgeReady'
+                , function () {
+                    console.log('WebViewJavascriptBridge done after WebViewJavascriptBridgeReady');
+                },
+                false
+            );
+        }
+
+        function callLoginOut() {
+            window.WebViewJavascriptBridge.callHandler(
+                'loginOut','', function (responseData) {
+                    console.log("callNavigateTo res ", responseData);
+                }
+            );
+        }
+
+        function callNavigateTo() {
+            window.WebViewJavascriptBridge.callHandler(
+                'navigateTo','http://h5.postitchat.com/#/pages/teb/E', function (responseData) {
+                    console.log("callNavigateTo res ", responseData);
+                }
+            );
+        }
+        function callNativeToken() {
+            console.log('callNativeToken done');
+            window.WebViewJavascriptBridge.callHandler('getToken','',function (responseData) {
+                console.log("callNativeToken res ", responseData);
+            });
+        }
+
+        function callChooseImage() {
+            window.WebViewJavascriptBridge.callHandler('chooseImage','{"count":9,"sizeType":"original","type": "h5", "sourceType": ["album","camera"]}', function (responseData) {
+                console.log("callChooseImage res ", responseData);
+            });
+        }
+
+        function callLocation() {
+            window.WebViewJavascriptBridge.callHandler('location','', function (responseData) {
+                console.log("callLocation res ", responseData);
+            });
+        }
+    </script>
+
+    <div style="font-size: 48px;">
+        <p>webview</p>
+        <button onclick="callLoginOut()" style="font-size: 48px;">callLoginOut</button>
+        <button onclick="callNavigateTo()" style="font-size: 48px;">callNavigateTo</button>
+        <button onclick="callNativeToken()" style="font-size: 48px;">callNativeToken</button>
+        <button onclick="callChooseImage()" style="font-size: 48px;">callChooseImage</button>
+        <button onclick="callLocation()" style="font-size: 48px;">callLocation</button>
+    </div>
+
+</body>
+
+</html>
