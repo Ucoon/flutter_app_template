@@ -44,6 +44,8 @@ dependencies:
   tuple: ^2.0.0
   fluwx: ^3.9.0+2
   cupertino_icons: ^1.0.2
+  flutter_app_badger: ^1.4.0
+
 
 dev_dependencies:
   flutter_test:
