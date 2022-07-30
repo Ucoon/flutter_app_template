@@ -22,7 +22,7 @@ dependencies:
   shared_preferences: ^2.0.15
   device_info_plus: ^4.0.0
   package_info_plus: ^1.4.2
-  kooboo_flutter_app_upgrade: ^0.0.7
+  kooboo_flutter_app_upgrade: ^0.0.8
   google_sign_in: ^5.3.3
   sign_in_with_apple: ^3.3.0
   flutter_login_facebook: ^1.4.1
