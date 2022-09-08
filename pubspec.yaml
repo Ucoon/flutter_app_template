@@ -43,7 +43,6 @@ dependencies:
   flutter_rating_bar: ^4.0.1
   tuple: ^2.0.0
   fluwx: ^3.9.0+2
-  cupertino_icons: ^1.0.2
   flutter_app_badger: ^1.4.0
 
 

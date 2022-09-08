@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:get/get_state_manager/src/simple/get_controllers.dart';
+import 'package:get/get.dart';
 import '../../../http/http_error.dart';
 import '../../../http/net_work.dart';
+import '../../../widget/loading_dialog.dart';
 import '../base_model.dart';
 import 'page_state.dart';
 
@@ -32,23 +33,29 @@ class BaseController<T extends BaseModel> extends GetxController {
     pageState.showEmpty();
   }
 
-  Future<void> launch(
-    Future<void> Function() future,
+  void request<V>(
+    Future<V> request,
+    HttpSuccessCallback<V> success,
     HttpFailureCallback err, {
-    VoidCallback? finalCall,
-    bool showLoadingIndicator = false,
-    bool isCancelable = true,
+    bool showLoadingIndicator = true,
   }) {
-    return future().catchError((onError) {
+    if (showLoadingIndicator) {
+      showLoadingDialog();
+    }
+    request.catchError((onError) {
+      if (showLoadingIndicator) {
+        Get.back();
+      }
       ///错误所有的网络异常
       debugPrint("啥错误:${onError.toString()}");
       HttpError error = HttpError.checkNetError(onError);
-      if (error.code == RequestClient.tokenInValid.toString()) {
-        ///TODO token过期处理
-        return;
-      }
+      error.handleError();
       err.call(error);
-      finalCall?.call();
+    }).then((value) {
+      if (showLoadingIndicator) {
+        Get.back();
+      }
+      success.call(value);
     });
   }
 }

@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_easyrefresh/easy_refresh.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import '../../../app/base/model/base_page_list_resp.dart';
-import '../../element.dart';
+import '../../loading_widget.dart';
 import 'empty_result_widget.dart';
 
 typedef OnRefreshCallback = Future<void> Function();
@@ -20,16 +21,62 @@ Header refreshHead = CustomHeader(
       bool enableInfiniteRefresh,
       bool success,
       bool noMore) {
-    return Stack(
-      fit: StackFit.expand,
-      children: [
-        Positioned(
-          bottom: 0,
-          left: 0,
-          right: 0,
-          child: buildLoading(),
+    String _refreshTitle = '';
+    if (enableInfiniteRefresh) {
+      _refreshTitle = 'refreshing'.tr;
+    } else {
+      switch (refreshState) {
+        case RefreshMode.refresh:
+          _refreshTitle = 'refreshing'.tr;
+          break;
+        case RefreshMode.refreshed:
+          _refreshTitle = 'refresh_done'.tr;
+          break;
+        case RefreshMode.done:
+          _refreshTitle = 'refresh_success'.tr;
+          break;
+        case RefreshMode.inactive:
+          _refreshTitle = 'refresh_cancel'.tr;
+          break;
+        case RefreshMode.armed:
+          _refreshTitle = 'refresh_release'.tr;
+          break;
+        case RefreshMode.drag:
+          _refreshTitle = 'refresh_drag'.tr;
+          break;
+        default:
+      }
+    }
+    late final Widget _child = Container(
+      margin: EdgeInsets.only(top: 10.5.h),
+      child: Text(
+        _refreshTitle,
+        style: TextStyle(
+          color: const Color(0xFFB3B3B3),
+          fontSize: 12.sp,
         ),
-      ],
+      ),
+    );
+    return RepaintBoundary(
+      child: Align(
+        alignment: const Alignment(0, -0.5),
+        child: ClipRect(
+          child: OverflowBar(
+            overflowAlignment: OverflowBarAlignment.center,
+            children: <Widget>[
+              SizedBox(
+                width: ScreenUtil().screenWidth,
+                child: Image.asset(
+                  'assets/images/pull_refresh.gif',
+                  width: 40.w,
+                  height: 28.h,
+                ),
+              ),
+              _child,
+            ],
+          ),
+        ),
+      ),
     );
   },
 );
@@ -46,16 +93,46 @@ Footer loadFooter = CustomFooter(
       bool enableInfiniteLoad,
       bool success,
       bool noMore) {
-    return Stack(
-      fit: StackFit.expand,
-      children: [
-        Positioned(
-          top: 0,
-          left: 0,
-          right: 0,
-          child: buildLoading(),
+    String _loadingTitle = '';
+    if (enableInfiniteLoad) {
+      _loadingTitle = 'loading'.tr;
+    } else {
+      switch (loadState) {
+        case LoadMode.loaded:
+        case LoadMode.done:
+          _loadingTitle = 'load_done'.tr;
+          break;
+        case LoadMode.inactive:
+        case LoadMode.load:
+        case LoadMode.armed:
+        case LoadMode.drag:
+          _loadingTitle = 'loading'.tr;
+          break;
+        default:
+      }
+    }
+    late final Widget _child = Text(
+      _loadingTitle,
+      style: TextStyle(
+        color: const Color(0xFFB3B3B3),
+        fontSize: 12.sp,
+      ),
+    );
+    return RepaintBoundary(
+      child: Align(
+        alignment: const Alignment(0, -0.5),
+        child: ClipRect(
+          child: OverflowBar(
+            overflowAlignment: OverflowBarAlignment.center,
+            children: [
+              const LoadingWidget(
+                stop: false,
+              ),
+              _child,
+            ],
+          ),
         ),
-      ],
+      ),
     );
   },
   enableInfiniteLoad: false,
@@ -70,7 +147,8 @@ class PagedListView<T extends BasePageRespEntry> extends StatelessWidget {
     required this.emptyIcon,
     this.emptyText = '',
     this.emptyHint = '',
-    this.emptyIconSize = 208,
+    this.emptyIconWidth = 142,
+    this.emptyIconHeight = 110,
     this.scrollDirection = Axis.vertical,
     this.itemCount,
     this.onLoad,
@@ -81,7 +159,8 @@ class PagedListView<T extends BasePageRespEntry> extends StatelessWidget {
   final String emptyIcon;
   final String emptyText;
   final String emptyHint;
-  final double emptyIconSize;
+  final double emptyIconWidth;
+  final double emptyIconHeight;
   final Axis scrollDirection; //列表方向,默认垂直方向
   final Widget Function(T value, int index) itemBuilder;
   final List<T> items;
@@ -89,6 +168,7 @@ class PagedListView<T extends BasePageRespEntry> extends StatelessWidget {
   final OnRefreshCallback? onLoad;
   final OnRefreshCallback? onRefresh;
   final EdgeInsets? padding;
+
   @override
   Widget build(BuildContext context) {
     final listPadding = padding ?? EdgeInsets.symmetric(vertical: 11.h);
@@ -100,8 +180,8 @@ class PagedListView<T extends BasePageRespEntry> extends StatelessWidget {
           ? EmptyResultWidget(
               icon: emptyIcon,
               text: emptyText,
-              hint: emptyHint,
-              iconSize: emptyIconSize,
+              iconWidth: emptyIconWidth,
+              iconHeight: emptyIconHeight,
             )
           : null,
       onLoad: onLoad,

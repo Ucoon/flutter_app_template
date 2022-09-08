@@ -18,17 +18,19 @@ class LoginController extends BaseController<LoginModel> {
 
   ///登录
   Future<void> login() async {
-    return launch(() async {
-      Future.delayed(const Duration(milliseconds: 1500), () async {
+    request<bool>(
+      model.login(),
+      (value) async {
         toastInfo(msg: 'login_success'.tr);
         await Global.saveUserToken('user_token');
         await Global.saveUserId('user_id');
         await Global.saveIsFirst(true);
         _goToHome();
-      });
-    }, (err) {
-      toastInfo(msg: err.message);
-    });
+      },
+      (err) {
+        toastInfo(msg: err.message);
+      },
+    );
   }
 
   ///跳转到主界面

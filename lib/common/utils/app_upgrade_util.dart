@@ -16,4 +16,14 @@ class AppUpgradeKit {
   static goToGoogleMarket() {
     return FlutterAppUpgrade.goToGoogleMarket();
   }
+
+  ///监听下载进度
+  static void onListenStreamData(Function onEvent, {Function? onError}) {
+    FlutterAppUpgrade.onListenStreamData(
+      (event) {
+        onEvent.call(event);
+      },
+      onError: onError,
+    );
+  }
 }

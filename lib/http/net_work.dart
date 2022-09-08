@@ -16,7 +16,6 @@ typedef HttpFailureCallback = void Function(HttpError err);
 
 class RequestClient {
   static const int httpSucceed = 200;
-  static const int tokenInValid = 401;
   static final RequestClient _instance = RequestClient._internal();
 
   factory RequestClient() => _instance;

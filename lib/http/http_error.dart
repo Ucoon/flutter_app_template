@@ -1,4 +1,6 @@
 import 'package:dio/dio.dart';
+import '../global.dart';
+import '../widget/widget.dart';
 import 'net_exception.dart';
 
 class HttpError {
@@ -11,6 +13,12 @@ class HttpError {
   static const int badGateWay = 502;
   static const int serviceUnAvailable = 503;
   static const int gateWayTimeout = 504;
+
+  ///token 无效
+  static const int tokenInValid = 20004;
+
+  ///token 过期
+  static const int tokenPastDue = 20007;
 
   ///未知错误
   static const String unknown = "UNKNOWN";
@@ -87,6 +95,16 @@ class HttpError {
     } else {
       code = unknown;
       message = error.toString();
+    }
+  }
+
+  Future<void> handleError() async {
+    if (code == tokenInValid.toString()) {
+      toastInfo(msg: message);
+      Global.logout();
+    } else if (code == tokenPastDue.toString()) {
+    } else {
+      // toastInfo(msg: message);
     }
   }
 

@@ -76,7 +76,6 @@ class _WaterFallFlowWidgetState extends State<WaterFallFlowWidget> {
         child: EmptyResultWidget(
           icon: widget.emptyIcon,
           text: widget.emptyText,
-          hint: widget.emptyHint,
         ),
       );
     }
