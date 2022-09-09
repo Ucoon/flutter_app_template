@@ -14,3 +14,4 @@ export 'statusbar_kit.dart';
 export 'storage.dart';
 export 'third_plateform_login.dart';
 export 'wechat_kit.dart';
+export 'widget_util.dart';

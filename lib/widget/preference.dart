@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import 'image.dart';
+import 'image/image.dart';
 
 class Preference extends StatelessWidget {
   final double verticalPadding;

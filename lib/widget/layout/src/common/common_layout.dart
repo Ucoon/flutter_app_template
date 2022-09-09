@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../../../../app/base/base_body_widget.dart';
+import '../../../../app/base/controller/base_controller.dart';
 import 'app_bar.dart';
 
-class CommonLayoutPage extends StatelessWidget {
+class CommonLayoutPage<T extends BaseController> extends StatelessWidget {
   const CommonLayoutPage(
     this.body, {
     Key? key,
@@ -25,6 +27,10 @@ class CommonLayoutPage extends StatelessWidget {
     this.preferredHeight = 44,
     this.centerTitle = true,
     this.removeBottom = true,
+    this.emptyIcon,
+    this.emptyText,
+    this.netErrorIcon,
+    this.onReload,
   }) : super(key: key);
 
   final Widget Function(BuildContext ctx) body;
@@ -47,6 +53,10 @@ class CommonLayoutPage extends StatelessWidget {
   final double preferredHeight;
   final bool centerTitle;
   final bool removeBottom;
+  final String? emptyIcon;
+  final String? emptyText;
+  final String? netErrorIcon;
+  final VoidCallback? onReload;
 
   Widget _buildBody(BuildContext context, {VoidCallback? onBackConfirm}) {
     return Scaffold(
@@ -71,7 +81,11 @@ class CommonLayoutPage extends StatelessWidget {
         child: Container(
           color: backgroundColor,
           margin: margin,
-          child: body(rootContext ?? context),
+          child: BaseBodyWidget<T>(body(rootContext ?? context),
+              emptyIcon: emptyIcon,
+              emptyText: emptyText,
+              netErrorIcon: netErrorIcon,
+              onReload: onReload),
         ),
       ),
       resizeToAvoidBottomInset: resizeToAvoidBottomInset,

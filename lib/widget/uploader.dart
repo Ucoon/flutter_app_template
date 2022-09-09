@@ -6,8 +6,8 @@ import 'package:get/get.dart';
 import 'package:quiver/strings.dart';
 import 'dashed_rect.dart';
 import 'dialog.dart';
-import 'image.dart';
 import '../common/utils/utils.dart';
+import 'image/image.dart';
 
 class ImageModel {
   final String localPreview;

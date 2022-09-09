@@ -37,13 +37,13 @@ dependencies:
   flutter_cache_manager: ^3.3.0
   waterfall_flow: ^3.0.2
   webview_flutter: ^3.0.4
-  flutter_swiper_null_safety: ^1.0.2
   photo_view: ^0.14.0
   flutter_html: ^3.0.0-alpha.5
   flutter_rating_bar: ^4.0.1
   tuple: ^2.0.0
   fluwx: ^3.9.0+2
   flutter_app_badger: ^1.4.0
+  carousel_pro_nullsafety: ^1.0.2
 
 
 dev_dependencies:

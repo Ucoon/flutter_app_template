@@ -14,10 +14,9 @@ Widget loadImage(
   BlendMode? colorBlendMode,
   bool darkLoading = false,
   double? loadingSize,
-  String? defaultAsset,
   Alignment? alignment,
   Color? color,
-  Widget? placeholder,
+  String placeholder = 'icon_place_logo',
 }) {
   if (isBlank(url)) {
     return getDefaultPlaceHolderWidget(
@@ -34,34 +33,12 @@ Widget loadImage(
     alignment: alignment ?? Alignment.center,
     cacheManager: DefaultCacheManager(),
     placeholder: (context, url) {
-      return placeholder ??
-          Container(
-            width: width,
-            height: height ?? loadingSize,
-            alignment: alignment ?? Alignment.center,
-            decoration: BoxDecoration(
-              color: color,
-              // borderRadius: borderRadius8,
-            ),
-          );
+      return getDefaultPlaceHolderWidget(
+          width: width ?? 64, height: height ?? 64);
     },
     errorWidget: (context, url, error) {
-      if (defaultAsset == null) {
-        return Container(
-          width: width,
-          height: height ?? loadingSize,
-          alignment: alignment ?? Alignment.center,
-          decoration: BoxDecoration(
-            color: color ?? Colors.grey,
-            // borderRadius: borderRadius8,
-          ),
-        );
-      } else {
-        return getIconPng(
-          defaultAsset,
-          iconSize: width ?? 64,
-        );
-      }
+      return getDefaultPlaceHolderWidget(
+          width: width ?? 64, height: height ?? 64);
     },
   );
 }
@@ -69,11 +46,16 @@ Widget loadImage(
 Widget getDefaultPlaceHolderWidget({
   double width = 64,
   double height = 64,
+  String placeholder = 'icon_place_logo',
 }) {
   return Container(
     width: width,
     height: height,
-    color: const Color(0xFFF5F5F5),
+    color: const Color(0xFFE0E2E6),
+    alignment: Alignment.center,
+    child: Image.asset(
+      'assets/images/$placeholder.png',
+    ),
   );
 }
 

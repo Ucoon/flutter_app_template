@@ -155,7 +155,6 @@ class Refresh extends StatefulWidget {
   final DragStartBehavior dragStartBehavior;
   final Widget? emptyWidget;
   final Future<void> Function()? preLoad;
-  // final Widget Function(Widget child, ScrollPhysics physics)? builder;
 
   @override
   State<Refresh> createState() => _RefreshState();

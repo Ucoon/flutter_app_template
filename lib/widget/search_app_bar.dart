@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
-import 'image.dart';
+import 'image/image.dart';
 import 'layout/layout.dart';
 
 /// 带搜索功能的AppBar

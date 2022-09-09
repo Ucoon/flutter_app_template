@@ -29,12 +29,11 @@ class BottomTabBarView extends StatelessWidget with PreferredSizeWidget {
   final double indicatorWeight;
   final double indicatorWidth;
   final double indicatorPaddingTop;
+  final bool showIndicator;
   final ValueChanged<int>? tabChanged;
   final TabController? tabController;
   final EdgeInsetsGeometry? margin;
   final bool isScrollable;
-  final Color? labelColor;
-  final Color? unselectedLabelColor;
   final TextStyle? labelStyle;
   final TextStyle? unselectedLabelStyle;
   final Decoration? decoration;
@@ -42,6 +41,7 @@ class BottomTabBarView extends StatelessWidget with PreferredSizeWidget {
   BottomTabBarView({
     Key? key,
     required this.tabs,
+    this.showIndicator = true,
     this.indicatorWeight = 4,
     this.indicatorWidth = 0,
     this.indicatorPaddingTop = 6,
@@ -49,9 +49,7 @@ class BottomTabBarView extends StatelessWidget with PreferredSizeWidget {
     this.tabChanged,
     this.margin,
     this.isScrollable = false,
-    this.labelColor,
     this.labelStyle,
-    this.unselectedLabelColor,
     this.unselectedLabelStyle,
     this.decoration = const BoxDecoration(
       border: Border(
@@ -77,7 +75,7 @@ class BottomTabBarView extends StatelessWidget with PreferredSizeWidget {
             return Container(
               width:
                   isScrollable ? null : ScreenUtil().screenWidth / tabs.length,
-              height: 32.h,
+              height: 50.h,
               padding: EdgeInsets.symmetric(
                 horizontal: isScrollable ? 12.w : 0,
               ),
@@ -94,27 +92,30 @@ class BottomTabBarView extends StatelessWidget with PreferredSizeWidget {
             );
           },
         ),
-        indicatorColor: const Color(0xFFDD4733),
-        labelColor: labelColor ?? const Color(0xFFDC593B), //选中时文字颜色
+        indicatorColor: const Color(0xFFD6A996),
+        labelColor: labelStyle?.color ?? const Color(0xFFDC593B), //选中时文字颜色
         labelStyle: labelStyle ?? //选中时文字样式
             TextStyle(
               fontSize: 13.sp,
               color: const Color(0xFFDC593B),
             ),
-        unselectedLabelColor: unselectedLabelColor ?? const Color(0xFF757575),
+        unselectedLabelColor:
+            unselectedLabelStyle?.color ?? const Color(0xFF757575),
         unselectedLabelStyle: unselectedLabelStyle ??
             TextStyle(
               fontSize: 13.sp,
               color: const Color(0xFF757575),
             ),
-        indicator: RoundUnderlineTabIndicator(
-          borderSide: BorderSide(
-            width: indicatorWeight.w,
-            color: const Color(0xFFDD4733),
-          ),
-          indicatorWidth: indicatorWidth,
-          indicatorPaddingTop: indicatorPaddingTop.h,
-        ),
+        indicator: showIndicator
+            ? RoundUnderlineTabIndicator(
+                borderSide: BorderSide(
+                  width: indicatorWeight.w,
+                  color: const Color(0xFFD6A996),
+                ),
+                indicatorWidth: indicatorWidth,
+                indicatorPaddingTop: indicatorPaddingTop.h,
+              )
+            : const BoxDecoration(),
         labelPadding: EdgeInsets.zero,
         indicatorSize: TabBarIndicatorSize.label,
         controller: tabController,

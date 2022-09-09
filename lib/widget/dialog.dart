@@ -195,12 +195,12 @@ Future<bool> showBottomDialog(
 }
 
 ///显示中间弹窗
-void showCenterDialog(
+Future<bool> showCenterDialog(
   BuildContext context,
   Widget child, {
   bool barrierDismissible = false,
 }) {
-  showDialog(
+  return showDialog(
     context: context,
     barrierDismissible: barrierDismissible,
     builder: (context) {
@@ -208,7 +208,7 @@ void showCenterDialog(
         child: child,
       );
     },
-  );
+  ).then((value) => value ?? false);
 }
 
 ///弹窗取消按钮

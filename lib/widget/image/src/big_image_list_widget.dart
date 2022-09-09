@@ -7,13 +7,13 @@ import 'package:gallery_saver/files.dart';
 import 'package:get/get.dart';
 import 'package:photo_view/photo_view.dart';
 import 'package:photo_view/photo_view_gallery.dart';
-import '../common/utils/utils.dart';
-import '../common/values/values.dart';
-import 'dashed_rect.dart';
-import 'image.dart';
-import 'wrap_widget.dart';
+import '../../../common/utils/utils.dart';
+import '../../../common/values/values.dart';
+import '../../dashed_rect.dart';
+import '../image.dart';
+import '../../wrap_widget.dart';
 
-class BigImageWidget extends StatelessWidget {
+class BigImageListWidget extends StatelessWidget {
   final String imageUrl; //图片地址
   final String thumbnailUrl; //缩略图地址
   final List<String> images; //多张图片切换
@@ -21,7 +21,7 @@ class BigImageWidget extends StatelessWidget {
   final BoxConstraints? constraints;
   final void Function(int index)? callBack;
 
-  const BigImageWidget(
+  const BigImageListWidget(
       {Key? key,
       required this.imageUrl,
       this.thumbnailUrl = '',
