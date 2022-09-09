@@ -22,7 +22,7 @@ class LoginPage extends GetView<LoginController> {
   @override
   Widget build(BuildContext context) {
     return UnFocusWrapper(
-      CommonLayoutPage(
+      CommonLayoutPage<LoginController>(
         _buildBody,
         margin: EdgeInsets.zero,
         backgroundColor: Colors.white,

@@ -19,7 +19,7 @@ class CustomWebPage<T extends JsBridgeController> extends GetView<T> {
     if (urlMap.containsKey("isCanBack")) {
       isCanBack = urlMap["isCanBack"] as bool;
     }
-    return CommonLayoutPage(
+    return CommonLayoutPage<JsBridgeController>(
       _buildBody,
       title: title ?? '',
       canBack: isCanBack ?? true,
