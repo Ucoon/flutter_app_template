@@ -16,14 +16,14 @@ typedef HttpFailureCallback = void Function(HttpError err);
 
 class RequestClient {
   static const int httpSucceed = 200;
-  static final RequestClient _instance = RequestClient._internal();
+  static final RequestClient instance = RequestClient._internal();
 
-  factory RequestClient() => _instance;
-  Dio? _client;
+  factory RequestClient() => instance;
+  Dio? client;
   CancelScope? cancelScope;
 
   RequestClient._internal() {
-    if (_client == null) {
+    if (client == null) {
       // BaseOptions、Options、RequestOptions 都可以配置参数，优先级别依次递增，且可以根据优先级别覆盖参数
       BaseOptions options = BaseOptions(
         // 请求基地址,可以包含子路径
@@ -51,10 +51,10 @@ class RequestClient {
         /// 如果想以文本(字符串)格式接收响应数据，请使用 `PLAIN`.
         responseType: ResponseType.json,
       );
-      _client = Dio(options);
-      _client!.interceptors.add(
+      client = Dio(options);
+      client!.interceptors.add(
           LocalLogInterceptor(requestBody: true, responseBody: true)); //开启请求日志
-      _client!.interceptors.add(TokenInterceptor());
+      client!.interceptors.add(TokenInterceptor());
     }
   }
 
@@ -122,7 +122,7 @@ class RequestClient {
           method: method,
         );
     CancelToken cancelToken = cancelScope!.get();
-    Response response = await _client!.request(requestUrl,
+    Response response = await client!.request(requestUrl,
         data: data,
         queryParameters: queryParameters,
         options: options,
