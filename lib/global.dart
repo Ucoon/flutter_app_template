@@ -1,7 +1,9 @@
 import 'dart:io';
+import 'package:android_id/android_id.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:package_by_walle/package_by_walle.dart';
 import 'package:quiver/strings.dart';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:package_info_plus/package_info_plus.dart';
@@ -24,11 +26,16 @@ class Global {
   /// android 设备信息
   static late AndroidDeviceInfo androidDeviceInfo;
 
+  static late String? androidId;
+
   /// ios 设备信息
   static late IosDeviceInfo iosDeviceInfo;
 
   /// 包信息
   static late PackageInfo packageInfo;
+
+  ///渠道信息
+  static late String channelId;
 
   /// 是否第一次打开
   static bool? isFirstOpen;
@@ -53,7 +60,16 @@ class Global {
       Global.iosDeviceInfo = await deviceInfoPlugin.iosInfo;
     } else {
       Global.androidDeviceInfo = await deviceInfoPlugin.androidInfo;
+      androidId = await const AndroidId().getId();
       WebView.platform = SurfaceAndroidWebView();
+    }
+
+    //渠道信息
+    if (Global.isIOS) {
+      channelId = '0';
+    } else {
+      Map<dynamic, dynamic>? info = await PackageByWalle.getPackingInfo;
+      channelId = info?['channelId'] ?? '1';
     }
 
     // 包信息
@@ -68,8 +84,8 @@ class Global {
       universalLink: universalLink,
     );
 
-    var result = await WeChatKit().isWeChatInstalledKit;
-    debugPrint("is installed $result");
+    //阿里云推送初始化
+    AliPushKit().initAliPush();
 
     // 读取设备第一次打开
     isFirstOpen = StorageUtil().getBool(storageDeviceFirstOpenKey);
@@ -89,7 +105,7 @@ class Global {
 
     var _locale = LocaleUtil.getAppLocale();
     if (isBlank(_locale)) {
-      LocaleUtil.saveAppLocale(const Locale('en', 'US'));
+      LocaleUtil.saveAppLocale(const Locale('zh', 'HK'));
     }
   }
 
@@ -143,14 +159,19 @@ class Global {
     return StorageUtil().putJSON(notificationDateTime, date.toString());
   }
 
-  // 保存设备iid
-  static saveIid(String id) async {
-    StorageUtil().putJSON(iid, id);
+  // 保存设备aliPushDeviceId
+  static saveAliPushDeviceId(String id) async {
+    StorageUtil().putJSON(aliPushDeviceIdKey, id);
   }
 
-  // 保存设备iid
-  static String getIid() {
-    return StorageUtil().getJSON(iid) ?? '';
+  // 获取设备aliPushDeviceId
+  static Future<String> getAliPushDeviceId() async {
+    String? aliPushDeviceId = StorageUtil().getJSON(aliPushDeviceIdKey);
+    if (aliPushDeviceId == null || aliPushDeviceId.isEmpty) {
+      aliPushDeviceId = await AliPushKit().getAliPushDeviceId();
+      saveAliPushDeviceId(aliPushDeviceId ?? '');
+    }
+    return aliPushDeviceId ?? '';
   }
 
   ///用户退出

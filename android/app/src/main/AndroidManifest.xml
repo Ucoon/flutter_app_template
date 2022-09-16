@@ -1,11 +1,63 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="tech.ucoon.flutter_app_template">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        tools:ignore="ScopedStorage" />
+
+    <!-- 阿里云推送相关权限 start-->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.REORDER_TASKS" />
+    <!-- 阿里云推送相关权限 end-->
+
     <application
+        android:name=".YardiApplication"
         android:icon="@mipmap/ic_launcher"
         android:label="flutter_app_template"
-        android:requestLegacyExternalStorage="true"
-        android:usesCleartextTraffic="true">
+        android:networkSecurityConfig="@xml/network_security_config"
+        android:requestLegacyExternalStorage="true">
+        <!--阿里云推送 start-->
+        <meta-data
+            android:name="com.alibaba.app.appkey"
+            android:value="${ALI_PUSH_APP_KEY}" />
+        <meta-data
+            android:name="com.alibaba.app.appsecret"
+            android:value="${ALI_PUSH_APP_SECRET}" />
+        <!--华为-->
+        <meta-data
+            android:name="com.huawei.hms.client.appid"
+            android:value="${HUAWEI_PUSH_APP_ID}" />
+        <!--小米-->
+        <meta-data
+            android:name="com.xiaomi.push.client.app_id"
+            android:value="${XIAOMI_PUSH_APP_ID}" />
+        <meta-data
+            android:name="com.xiaomi.push.client.app_key"
+            android:value="${XIAOMI_PUSH_APP_KEY}" />
+        <!--OPPO-->
+        <meta-data
+            android:name="com.oppo.push.client.app_key"
+            android:value="${OPPO_PUSH_APP_KEY}" />
+        <meta-data
+            android:name="com.oppo.push.client.app_secret"
+            android:value="${OPPO_PUSH_APP_SECRET}" />
+        <!--VIVO-->
+        <meta-data
+            android:name="com.vivo.push.app_id"
+            android:value="${VIVO_PUSH_APP_ID}" />
+        <meta-data
+            android:name="com.vivo.push.api_key"
+            android:value="${VIVO_PUSH_APP_KEY}" />
+        <!--阿里云推送 end-->
         <activity
             android:name=".MainActivity"
             android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
@@ -22,6 +74,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="com.yalantis.ucrop.UCropActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name="com.jarvanmo.rammus.PopupPushActivity"
+            android:exported="true"
+            tools:ignore="Instantiatable" />
+
         <meta-data
             android:name="flutterEmbedding"
             android:value="2" />

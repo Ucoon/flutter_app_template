@@ -18,6 +18,9 @@ const String storageDevicePolicyEntryKey = 'device_policy_entryKey';
 /// 设备的id
 const String iid = 'iid';
 
+/// aliPushDeviceId
+const String aliPushDeviceIdKey = 'aliPushDeviceId';
+
 /// 设备的语言
 const String storageLangKey = 'lang';
 

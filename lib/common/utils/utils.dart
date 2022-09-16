@@ -1,6 +1,7 @@
 library utils;
 
 export 'app_kit.dart';
+export 'ali_push_kit.dart';
 export 'app_upgrade_util.dart';
 export 'clipboard_kit.dart';
 export 'date_util.dart';

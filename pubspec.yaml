@@ -22,7 +22,7 @@ dependencies:
   shared_preferences: ^2.0.15
   device_info_plus: ^4.0.0
   package_info_plus: ^1.4.2
-  kooboo_flutter_app_upgrade: ^0.0.8
+  kooboo_flutter_app_upgrade: ^0.0.9
   google_sign_in: ^5.3.3
   sign_in_with_apple: ^3.3.0
   flutter_login_facebook: ^1.4.1
@@ -41,9 +41,13 @@ dependencies:
   flutter_html: ^3.0.0-alpha.5
   flutter_rating_bar: ^4.0.1
   tuple: ^2.0.0
-  fluwx: ^3.9.0+2
+  fluwx: ^3.9.1
   flutter_app_badger: ^1.4.0
   carousel_pro_nullsafety: ^1.0.2
+  rammus: ^2.4.0
+  image_gallery_saver: ^1.7.1
+  android_id: ^0.0.7
+  package_by_walle: ^1.0.2
 
 
 dev_dependencies:

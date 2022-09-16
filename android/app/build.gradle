@@ -25,8 +25,25 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 
+apply plugin: 'walle'
+
+walle {
+    // 指定渠道包的输出路径
+    apkOutputFolder = new File("${project.rootDir}/output/channels/")
+    // 定制渠道包的APK的文件名称
+    apkFileNameFormat = '大象汇藏-${channel}-v${versionName}-${versionCode}-${buildTime}.apk'
+    // 渠道&额外信息配置文件
+    configFile = new File("${project.rootDir}/config.json")
+}
+
 android {
-    compileSdkVersion 31
+    compileSdkVersion flutter.compileSdkVersion
+
+    lintOptions {
+        disable 'InvalidPackage'
+        checkReleaseBuilds false
+        abortOnError false
+    }
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -39,12 +56,36 @@ android {
         targetSdkVersion flutter.targetSdkVersion
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
+        ndk {
+            abiFilters 'armeabi' , 'armeabi-v7a',  'arm64-v8a'
+        }
+        manifestPlaceholders = [
+                ALI_PUSH_APP_KEY    : "333765354",
+                ALI_PUSH_APP_SECRET : "c603704cd6ce4e3e870201ca85c1c8a4",
+                HUAWEI_PUSH_APP_ID  : "",
+                XIAOMI_PUSH_APP_ID  : "",
+                XIAOMI_PUSH_APP_KEY : "",
+                OPPO_PUSH_APP_KEY   : "",
+                OPPO_PUSH_APP_SECRET: "",
+                VIVO_PUSH_APP_ID    : "",
+                VIVO_PUSH_APP_KEY   : "",
+        ]
     }
 
     buildTypes {
         release {
-            // TODO: Add your own signing config for the release build.
-            // Signing with the debug keys for now, so `flutter run --release` works.
+            //开启混淆
+            minifyEnabled true
+            //Zipalign优化
+            zipAlignEnabled true
+            // 移除无用的resource文件
+            shrinkResources true
+            signingConfig signingConfigs.debug
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'app-proguard-rules.pro'
+        }
+        debug {
+            //开启混淆
+            minifyEnabled false
             signingConfig signingConfigs.debug
         }
     }

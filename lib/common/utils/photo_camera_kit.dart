@@ -1,8 +1,13 @@
 import 'dart:io';
+import 'dart:typed_data';
+import 'dart:ui' as ui show Image, ImageByteFormat;
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gallery_saver/gallery_saver.dart';
 import 'package:get/get.dart';
 import 'package:image_cropper/image_cropper.dart';
+import 'package:image_gallery_saver/image_gallery_saver.dart';
 import 'package:video_compress/video_compress.dart';
 import 'package:wechat_assets_picker/wechat_assets_picker.dart';
 import 'package:wechat_camera_picker/wechat_camera_picker.dart';
@@ -52,6 +57,9 @@ class PhotoCameraKit {
     int maxAssets = 9,
     RequestType requestType = RequestType.common,
   }) async {
+    bool _request =
+        await PermissionChecker.requestPhotoAlbumPermission(context);
+    if (!_request) return null;
     return AssetPicker.pickAssets(
       context,
       pickerConfig: AssetPickerConfig(
@@ -65,6 +73,8 @@ class PhotoCameraKit {
   ///[enableRecording] 是否允许录像
   static Future<AssetEntity?> camera(BuildContext context,
       {bool enableRecording = true}) async {
+    bool _request = await PermissionChecker.requestCameraPermission(context);
+    if (!_request) return null;
     final asset = await CameraPicker.pickFromCamera(
       context,
       pickerConfig: CameraPickerConfig(
@@ -123,6 +133,20 @@ class PhotoCameraKit {
       format: jpgFile ? CompressFormat.jpeg : CompressFormat.png,
     );
     return result;
+  }
+
+  static Future<Uint8List> compressWithList(
+    Uint8List compressWithList, {
+    int minWidth = 1920,
+    int minHeight = 1080,
+    int quality = 95,
+  }) async {
+    return FlutterImageCompress.compressWithList(
+      compressWithList,
+      minWidth: minWidth,
+      minHeight: minHeight,
+      quality: quality,
+    );
   }
 
   ///选择弹窗
@@ -232,8 +256,9 @@ class PhotoCameraKit {
       if (file == null) return;
       if (image) {
         if (cropImage) {
-          await _cropAndUploadImage(context, file.path, (File? cropFile) {
-            if (cropFile != null) file = cropFile;
+          await _cropAndUploadImage(context, file.path,
+              (CroppedFile? cropFile) {
+            if (cropFile != null) file = File(cropFile.path);
           });
         }
         final thumbnail = await compressAndGetFile(file!.path);
@@ -253,6 +278,38 @@ class PhotoCameraKit {
     }
     onPicked(result);
     Navigator.pop(context);
+  }
+
+  static Future<Uint8List?> getCaptureSource(GlobalKey repaintKey) async {
+    try {
+      RenderRepaintBoundary boundary = repaintKey.currentContext
+          ?.findRenderObject() as RenderRepaintBoundary;
+      //see https://github.com/flutter/flutter/issues/21269
+      ui.Image image =
+          await boundary.toImage(pixelRatio: ScreenUtil().pixelRatio ?? 1);
+      ByteData? byteData =
+          await image.toByteData(format: ui.ImageByteFormat.png);
+      return byteData?.buffer.asUint8List();
+    } catch (e) {
+      debugPrint('CreateFormulaPageState.getQrCodeSource $e');
+    }
+    return null;
+  }
+
+  ///保存截图
+  /// return file path
+  static Future<String?> saveScreenShotImage(
+      BuildContext context, GlobalKey repaintKey) async {
+    bool _request = await PermissionChecker.requestStoragePermission(context);
+    if (!_request) return null;
+    Uint8List? uint8List = await getCaptureSource(repaintKey);
+    if (uint8List == null) return null;
+    try {
+      final result = await ImageGallerySaver.saveImage(uint8List, quality: 100);
+      return result['filePath'];
+    } catch (e) {
+      return null;
+    }
   }
 
   ///保存网络图片
