@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-import '../widget.dart';
+import '../../widget.dart';
 
 class RoundCheckBox extends StatefulWidget {
   final bool initValue;
@@ -41,8 +40,7 @@ class _RoundCheckBoxState extends State<RoundCheckBox> {
         setState(() {
           _initValue = !_initValue;
         });
-        if (widget.onChanged == null) return;
-        widget.onChanged!(_initValue);
+        widget.onChanged?.call(_initValue);
       },
       child: Container(
         padding: const EdgeInsets.all(10.0),
