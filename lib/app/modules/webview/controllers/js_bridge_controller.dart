@@ -33,7 +33,7 @@ class JsBridgeController extends BaseController<JsBridgeModel> {
   void registerDeviceId() {
     jsBridge.registerHandler("getDeviceId", (data) async {
       debugPrint('getDeviceId');
-      String deviceId = Global.getIid();
+      String deviceId = Global.androidId ?? '';
       debugPrint('deviceId $deviceId');
       await jsBridge.callHandler('getDeviceId', data: deviceId);
       return deviceId;
