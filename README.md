@@ -18,7 +18,7 @@ lib/
       |- controllers/	# 逻辑处理
       |- model/		# request和response的model
       |- views/		# 当前模块UI页面
-      |- widget/		# 当前模块widget
+      |- widget/	# 当前模块widget
       |- index
     |- routes/		# 路由表
   |- common/
@@ -36,3 +36,23 @@ lib/
 pubspec.yaml		# 配置文件
 
 ```
+
+# 已接入的第三方SDK：
+
+1. 第三方授权登录：
+
+   - `google_sign_in`：google登录(https://pub.dev/packages/google_sign_in)
+   - `sign_in_with_apple`：apple登录(https://pub.dev/packages/sign_in_with_apple)
+   - `flutter_login_facebook`：Facebook登录(https://pub.dev/packages/flutter_login_facebook)
+
+   具体实现可参考`third_plateform_login.dart`
+
+2. 微信相关：
+
+   - `fluwx`：包括登录、分享、支付
+
+   具体实现可参考`wechat_kit.dart`
+
+3. 阿里云推送：
+
+   `rammus`：
