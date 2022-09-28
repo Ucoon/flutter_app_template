@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class KCheckBox extends StatefulWidget {
+class CheckBoxWidget extends StatefulWidget {
   final bool initValue;
   final bool isRound; //是否圆形
   final double size;
@@ -9,7 +9,7 @@ class KCheckBox extends StatefulWidget {
   final Function(bool)? onChanged;
   final Widget Function(Widget child)? builder;
 
-  const KCheckBox({
+  const CheckBoxWidget({
     Key? key,
     required this.initValue,
     this.isRound = false,
@@ -20,10 +20,10 @@ class KCheckBox extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  createState() => _KCheckBoxState();
+  createState() => _CheckBoxWidget();
 }
 
-class _KCheckBoxState extends State<KCheckBox> {
+class _CheckBoxWidget extends State<CheckBoxWidget> {
   late bool _initValue;
   @override
   void initState() {
@@ -32,7 +32,7 @@ class _KCheckBoxState extends State<KCheckBox> {
   }
 
   @override
-  void didUpdateWidget(covariant KCheckBox oldWidget) {
+  void didUpdateWidget(covariant CheckBoxWidget oldWidget) {
     super.didUpdateWidget(oldWidget);
     if (widget.initValue != oldWidget.initValue) {
       _initValue = widget.initValue;

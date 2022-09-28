@@ -1,23 +1,27 @@
+import '../net_work.dart';
+
 class BaseRespEntity<T> {
   BaseRespEntity({
     this.code = 0,
-    this.success = false,
+    this.message = '',
     this.data,
   });
 
   int code;
-  bool success;
+  String message;
   dynamic data;
 
+  bool get succeed => code == RequestClient.httpSucceed;
+
   factory BaseRespEntity.fromJson(Map<String, dynamic> json) => BaseRespEntity(
-        code: json["code"],
-        success: json["success"],
-        data: json["data"],
-      );
+    code: json["code"],
+    message: json["message"],
+    data: json["data"],
+  );
 
   Map<String, dynamic> toJson() => {
-        "code": code,
-        "success": success,
-        "data": data,
-      };
+    "code": code,
+    "message": message,
+    "data": data,
+  };
 }

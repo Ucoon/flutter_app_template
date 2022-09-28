@@ -9,7 +9,7 @@ export 'bottom_height.dart';
 export 'buttons.dart';
 export 'circle_indicator.dart';
 export 'city_picker/city_picker.dart';
-export 'check_box/check_box.dart';
+export 'check_box.dart';
 export 'count_down.dart';
 export 'custom_list_tile.dart';
 export 'dialog.dart';

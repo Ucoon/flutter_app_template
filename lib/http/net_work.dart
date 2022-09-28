@@ -127,17 +127,16 @@ class RequestClient {
         queryParameters: queryParameters,
         options: options,
         cancelToken: cancelToken);
-
     if (response.statusCode == HttpStatus.ok) {
       var baseResult = response.data;
-      if (baseResult['code'] == httpSucceed || baseResult['errorCode'] == "0") {
+      if (baseResult['code'] == httpSucceed) {
         var data = baseResult['data'];
         if (data != null) {
           try {
             BaseRespEntity<T> baseResEntity = BaseRespEntity()
               ..data = data
-              ..code = baseResult['code'] ?? int.parse(baseResult['errorCode'])
-              ..success = baseResult['success'];
+              ..code = baseResult['code']
+              ..message = baseResult['message'] ?? '';
             return Future.value(baseResEntity);
           } catch (e) {
             throw (ResponseException(
@@ -146,12 +145,12 @@ class RequestClient {
         } else {
           BaseRespEntity<T> baseResEntity = BaseRespEntity()
             ..code = baseResult['code']
-            ..success = baseResult['success'];
+            ..message = baseResult['message'] ?? '';
           return Future.value(baseResEntity);
         }
       } else {
         throw (ResponseException(
-            code: baseResult['code'], msg: baseResult['msg']));
+            code: baseResult['code'], msg: baseResult['message'] ?? ''));
       }
     } else {
       throw (DioError(requestOptions: RequestOptions(path: requestUrl)));
