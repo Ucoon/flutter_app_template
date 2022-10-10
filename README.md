@@ -49,10 +49,18 @@ pubspec.yaml		# 配置文件
 
 2. 微信相关：
 
-   - `fluwx`：包括登录、分享、支付
+   - `fluwx`：包括登录、分享、支付(https://pub.dev/packages/fluwx)
 
    具体实现可参考`wechat_kit.dart`
 
 3. 阿里云推送：
 
-   `rammus`：
+   `rammus`：https://pub.dev/packages/rammus
+   
+   具体实现可参考`ali_push_kit.dart`
+
+# 已集成的功能：
+
+1. 应用内升级：https://pub.dev/packages/kooboo_flutter_app_upgrade
+
+   具体实现可参考：`app_upgrade_util.dart`
