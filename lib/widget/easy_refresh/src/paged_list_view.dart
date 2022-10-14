@@ -3,8 +3,7 @@ import 'package:flutter_easyrefresh/easy_refresh.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import '../../../app/base/model/base_page_list_resp.dart';
-import '../../loading_widget.dart';
-import 'empty_result_widget.dart';
+import '../../widget.dart';
 
 typedef OnRefreshCallback = Future<void> Function();
 
@@ -66,11 +65,7 @@ Header refreshHead = CustomHeader(
             children: <Widget>[
               SizedBox(
                 width: ScreenUtil().screenWidth,
-                child: Image.asset(
-                  'assets/images/pull_refresh.gif',
-                  width: 40.w,
-                  height: 28.h,
-                ),
+                child: const LoadingWidget(stop: false),
               ),
               _child,
             ],
