@@ -48,7 +48,9 @@ dependencies:
   image_gallery_saver: ^1.7.1
   android_id: ^0.0.7
   package_by_walle: ^1.0.2
-
+  weibo_kit: ^4.0.0
+  tencent_kit: ^4.0.0
+  tobias: ^2.4.1
 
 dev_dependencies:
   flutter_test:

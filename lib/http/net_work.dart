@@ -1,5 +1,7 @@
+import 'dart:convert';
 import 'dart:io';
 import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart';
 import 'entity/base_resp_entity.dart';
 import 'http_error.dart';
 import 'interceptor/local_log_interceptor.dart';
@@ -7,6 +9,15 @@ import 'interceptor/token_interceptor.dart';
 import 'net_cancel_scope.dart';
 import 'net_exception.dart';
 import '../common/values/values.dart';
+
+/// 必须是顶层函数
+_parseAndDecode(String response) {
+  return jsonDecode(response);
+}
+
+parseJson(String text) {
+  return compute(_parseAndDecode, text);
+}
 
 ///http请求成功回调
 typedef HttpSuccessCallback<T> = void Function(T result);
@@ -52,6 +63,9 @@ class RequestClient {
         responseType: ResponseType.json,
       );
       client = Dio(options);
+      // 针对复杂json解析会造成卡顿问题，dio给出的方案是使用compute方法在后台去解析json
+      (client!.transformer as DefaultTransformer).jsonDecodeCallback =
+          parseJson;
       client!.interceptors.add(
           LocalLogInterceptor(requestBody: true, responseBody: true)); //开启请求日志
       client!.interceptors.add(TokenInterceptor());

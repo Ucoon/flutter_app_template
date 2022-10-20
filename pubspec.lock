@@ -462,6 +462,13 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "0.6.4"
+  json_annotation:
+    dependency: transitive
+    description:
+      name: json_annotation
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "4.7.0"
   kooboo_flutter_app_upgrade:
     dependency: "direct main"
     description:
@@ -873,6 +880,13 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "3.0.0+2"
+  tencent_kit:
+    dependency: "direct main"
+    description:
+      name: tencent_kit
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "4.0.0"
   term_glyph:
     dependency: transitive
     description:
@@ -887,6 +901,13 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "0.4.12"
+  tobias:
+    dependency: "direct main"
+    description:
+      name: tobias
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "2.4.1"
   tuple:
     dependency: "direct main"
     description:
@@ -1006,6 +1027,13 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "3.4.0"
+  weibo_kit:
+    dependency: "direct main"
+    description:
+      name: weibo_kit
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "4.0.0"
   win32:
     dependency: transitive
     description:

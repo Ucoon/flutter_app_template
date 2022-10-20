@@ -2,6 +2,7 @@ library utils;
 
 export 'app_kit.dart';
 export 'ali_push_kit.dart';
+export 'alipay_kit.dart';
 export 'app_upgrade_util.dart';
 export 'clipboard_kit.dart';
 export 'date_util.dart';
@@ -11,8 +12,10 @@ export 'logger.dart';
 export 'permission.dart';
 export 'photo_camera_kit.dart';
 export 'regexp_kit.dart';
+export 'sina_kit.dart';
 export 'statusbar_kit.dart';
 export 'storage.dart';
+export 'tencent_kit.dart';
 export 'third_plateform_login.dart';
 export 'wechat_kit.dart';
 export 'widget_util.dart';

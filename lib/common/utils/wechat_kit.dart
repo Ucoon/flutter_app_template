@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:io';
+import 'dart:typed_data';
 import 'package:fluwx/fluwx.dart' as fluwx;
 
 ///微信分享、支付等工具类
@@ -60,10 +61,41 @@ class WeChatKit {
   }
 
   ///调起微信分享--图片
-  void shareImageToWeChat(
-      fluwx.WeChatImage source, fluwx.WeChatImage thumbnail) {
-    fluwx.shareToWeChat(
+  Future<bool> shareImageToWeChat(Uint8List originSource) {
+    fluwx.WeChatImage source = fluwx.WeChatImage.binary(originSource);
+    fluwx.WeChatImage thumbnail = fluwx.WeChatImage.binary(originSource);
+    return fluwx.shareToWeChat(
         fluwx.WeChatShareImageModel(source, thumbnail: thumbnail));
+  }
+
+  ///调起微信分享--网络图片
+  Future<bool> shareNetWorkImageToWeChat(
+    String urlImage, {
+    String? title,
+    String? description,
+  }) {
+    fluwx.WeChatImage source = fluwx.WeChatImage.network(urlImage);
+    return fluwx.shareToWeChat(fluwx.WeChatShareImageModel(
+      source,
+      title: title,
+      description: description,
+    ));
+  }
+
+  ///调起微信分享--url
+  Future<bool> shareUrlToWeChat(
+    String url, {
+    required Uint8List logo,
+    String title = '',
+    String description = '',
+  }) async {
+    fluwx.WeChatImage thumbnail = fluwx.WeChatImage.binary(logo);
+    return fluwx.shareToWeChat(fluwx.WeChatShareWebPageModel(
+      url,
+      title: title,
+      description: description,
+      thumbnail: thumbnail,
+    ));
   }
 
   ///调起微信小程序
