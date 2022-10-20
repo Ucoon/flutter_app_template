@@ -107,7 +107,7 @@ pubspec.yaml		# 配置文件
 
 2. 微信相关：
 
-   - `fluwx`：包括登录、分享、支付(https://pub.dev/packages/fluwx)
+   - `fluwx`：包括登录、分享、支付，跳转小程序(https://pub.dev/packages/fluwx)
 
    具体实现可参考`wechat_kit.dart`
 
@@ -117,7 +117,18 @@ pubspec.yaml		# 配置文件
 
    具体实现可参考`ali_push_kit.dart`
 
-4. 美团多渠道打包：
+4. 支付相关：
+
+   - 微信支付：具体实现可参考`wechat_kit.dart`
+   - 支付宝支付：[`tobias`](https://pub.dev/packages/tobias)，具体实现可参考`alipay_kit.dart`
+
+5. 分享相关：
+
+   - 微博分享：[`weibo_kit`](https://pub.dev/packages/weibo_kit)，具体实现可参考`sina_kit.dart`
+   - qq分享：[`tencent_kit`](https://pub.dev/packages/tencent_kit)，具体实现可参考`tencent_kit.dart`
+   - 微信分享：[`fluwx`](https://pub.dev/packages/fluwx)，具体实现可参考`wechat_kit.dart`
+
+6. 美团多渠道打包：
 
    `package_by_walle`：https://pub.dev/packages/package_by_walle
 
