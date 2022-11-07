@@ -69,6 +69,7 @@ android {
                 OPPO_PUSH_APP_SECRET: "",
                 VIVO_PUSH_APP_ID    : "",
                 VIVO_PUSH_APP_KEY   : "",
+                TENCENT_APP_ID: "",
         ]
     }
 
