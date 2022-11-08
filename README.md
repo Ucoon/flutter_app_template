@@ -115,7 +115,7 @@ pubspec.yaml		# 配置文件
 
    `rammus`：https://pub.dev/packages/rammus
 
-   具体实现可参考`ali_push_kit.dart`
+   具体实现可参考`ali_push_kit.dart`，
 
 4. 支付相关：
 
@@ -136,4 +136,19 @@ pubspec.yaml		# 配置文件
 
 1. 应用内升级：https://pub.dev/packages/kooboo_flutter_app_upgrade
 
-   具体实现可参考：`app_upgrade_util.dart`
+   具体实现可参考：`app_upgradeali_util.dart`
+
+# 问题参考
+
+1. 阿里云推送`rammus`和支付宝支付`tobias`插件在iOS上有utdid 库相关的冲突
+
+   ```dart
+   解决：下载AlipaySDK-noutdid兼容版SDK，替换掉支付宝支付tobias下的AlipaySDK
+   ```
+
+   参考：
+
+   1. https://github.com/OpenFlutter/rammus/issues/23
+   2. [App 支付客户端 DEMO&SDK](https://opendocs.alipay.com/open/04km1h)
+
+   
