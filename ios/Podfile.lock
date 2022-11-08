@@ -1,0 +1,297 @@
+PODS:
+  - AlicloudPush (1.9.9.7):
+    - AlicloudSender
+    - AlicloudUT
+    - AlicloudUtils
+  - AlicloudSender (1.0.0.3):
+    - AlicloudUTDID
+    - EMASRest
+  - AlicloudUT (5.2.0.16):
+    - AlicloudUTDID
+  - AlicloudUTDID (1.5.0.94)
+  - AlicloudUtils (1.3.9):
+    - AlicloudUTDID
+  - AppAuth (1.5.0):
+    - AppAuth/Core (= 1.5.0)
+    - AppAuth/ExternalUserAgent (= 1.5.0)
+  - AppAuth/Core (1.5.0)
+  - AppAuth/ExternalUserAgent (1.5.0):
+    - AppAuth/Core
+  - camera_avfoundation (0.0.1):
+    - Flutter
+  - device_info_plus (0.0.1):
+    - Flutter
+  - EMASRest (11.1.1.2)
+  - FBAEMKit (12.3.2):
+    - FBSDKCoreKit_Basics (= 12.3.2)
+  - FBSDKCoreKit (12.3.2):
+    - FBAEMKit (= 12.3.2)
+    - FBSDKCoreKit_Basics (= 12.3.2)
+  - FBSDKCoreKit_Basics (12.3.2)
+  - FBSDKLoginKit (12.3.2):
+    - FBSDKCoreKit (= 12.3.2)
+  - Flutter (1.0.0)
+  - flutter_app_badger (1.3.0):
+    - Flutter
+  - flutter_image_compress (0.0.1):
+    - Flutter
+    - Mantle
+    - SDWebImage
+    - SDWebImageWebPCoder
+  - flutter_login_facebook (1.4.0):
+    - FBSDKLoginKit (~> 12.3)
+    - Flutter
+  - fluwx (0.0.1):
+    - Flutter
+    - "OpenWeChatSDK (~> 1.9.2+1)"
+  - FMDB (2.7.5):
+    - FMDB/standard (= 2.7.5)
+  - FMDB/standard (2.7.5)
+  - gallery_saver (0.0.1):
+    - Flutter
+  - google_sign_in_ios (0.0.1):
+    - Flutter
+    - GoogleSignIn (~> 6.2)
+  - GoogleSignIn (6.2.2):
+    - AppAuth (~> 1.5)
+    - GTMAppAuth (~> 1.3)
+    - GTMSessionFetcher/Core (~> 1.1)
+  - GTMAppAuth (1.3.0):
+    - AppAuth/Core (~> 1.4)
+    - GTMSessionFetcher/Core (~> 1.5)
+  - GTMSessionFetcher/Core (1.7.2)
+  - image_cropper (0.0.4):
+    - Flutter
+    - TOCropViewController (~> 2.6.1)
+  - image_gallery_saver (1.5.0):
+    - Flutter
+  - kooboo_flutter_app_upgrade (0.0.3):
+    - Flutter
+  - libwebp (1.2.1):
+    - libwebp/demux (= 1.2.1)
+    - libwebp/mux (= 1.2.1)
+    - libwebp/webp (= 1.2.1)
+  - libwebp/demux (1.2.1):
+    - libwebp/webp
+  - libwebp/mux (1.2.1):
+    - libwebp/demux
+  - libwebp/webp (1.2.1)
+  - Mantle (2.2.0):
+    - Mantle/extobjc (= 2.2.0)
+  - Mantle/extobjc (2.2.0)
+  - "OpenWeChatSDK (1.9.2+1)"
+  - package_by_walle (0.0.1):
+    - Flutter
+  - package_info_plus (0.4.5):
+    - Flutter
+  - path_provider_ios (0.0.1):
+    - Flutter
+  - permission_handler_apple (9.0.4):
+    - Flutter
+  - photo_manager (2.0.0):
+    - Flutter
+    - FlutterMacOS
+  - rammus (0.0.1):
+    - AlicloudPush (~> 1.9.9)
+    - Flutter
+  - SDWebImage (5.13.0):
+    - SDWebImage/Core (= 5.13.0)
+  - SDWebImage/Core (5.13.0)
+  - SDWebImageWebPCoder (0.8.5):
+    - libwebp (~> 1.0)
+    - SDWebImage/Core (~> 5.10)
+  - shared_preferences_ios (0.0.1):
+    - Flutter
+  - sign_in_with_apple (0.0.1):
+    - Flutter
+  - sqflite (0.0.2):
+    - Flutter
+    - FMDB (>= 2.7.5)
+  - tencent_kit (4.0.0):
+    - Flutter
+    - tencent_kit/vendor (= 4.0.0)
+  - tencent_kit/vendor (4.0.0):
+    - Flutter
+  - tobias (0.0.1):
+    - Flutter
+  - TOCropViewController (2.6.1)
+  - video_compress (0.3.0):
+    - Flutter
+  - video_player_avfoundation (0.0.1):
+    - Flutter
+  - webview_flutter_wkwebview (0.0.1):
+    - Flutter
+  - weibo_kit (4.0.0):
+    - Flutter
+    - weibo_kit/vendor (= 4.0.0)
+  - weibo_kit/vendor (4.0.0):
+    - Flutter
+    - Weibo_SDK (~> 3.3.0)
+  - Weibo_SDK (3.3.0)
+
+DEPENDENCIES:
+  - AlicloudPush (~> 1.9.9)
+  - camera_avfoundation (from `.symlinks/plugins/camera_avfoundation/ios`)
+  - device_info_plus (from `.symlinks/plugins/device_info_plus/ios`)
+  - Flutter (from `Flutter`)
+  - flutter_app_badger (from `.symlinks/plugins/flutter_app_badger/ios`)
+  - flutter_image_compress (from `.symlinks/plugins/flutter_image_compress/ios`)
+  - flutter_login_facebook (from `.symlinks/plugins/flutter_login_facebook/ios`)
+  - fluwx (from `.symlinks/plugins/fluwx/ios`)
+  - gallery_saver (from `.symlinks/plugins/gallery_saver/ios`)
+  - google_sign_in_ios (from `.symlinks/plugins/google_sign_in_ios/ios`)
+  - image_cropper (from `.symlinks/plugins/image_cropper/ios`)
+  - image_gallery_saver (from `.symlinks/plugins/image_gallery_saver/ios`)
+  - kooboo_flutter_app_upgrade (from `.symlinks/plugins/kooboo_flutter_app_upgrade/ios`)
+  - package_by_walle (from `.symlinks/plugins/package_by_walle/ios`)
+  - package_info_plus (from `.symlinks/plugins/package_info_plus/ios`)
+  - path_provider_ios (from `.symlinks/plugins/path_provider_ios/ios`)
+  - permission_handler_apple (from `.symlinks/plugins/permission_handler_apple/ios`)
+  - photo_manager (from `.symlinks/plugins/photo_manager/ios`)
+  - rammus (from `.symlinks/plugins/rammus/ios`)
+  - shared_preferences_ios (from `.symlinks/plugins/shared_preferences_ios/ios`)
+  - sign_in_with_apple (from `.symlinks/plugins/sign_in_with_apple/ios`)
+  - sqflite (from `.symlinks/plugins/sqflite/ios`)
+  - tencent_kit (from `.symlinks/plugins/tencent_kit/ios`)
+  - tobias (from `.symlinks/plugins/tobias/ios`)
+  - video_compress (from `.symlinks/plugins/video_compress/ios`)
+  - video_player_avfoundation (from `.symlinks/plugins/video_player_avfoundation/ios`)
+  - webview_flutter_wkwebview (from `.symlinks/plugins/webview_flutter_wkwebview/ios`)
+  - weibo_kit (from `.symlinks/plugins/weibo_kit/ios`)
+
+SPEC REPOS:
+  https://github.com/aliyun/aliyun-specs.git:
+    - AlicloudPush
+    - AlicloudSender
+    - AlicloudUT
+    - AlicloudUTDID
+    - AlicloudUtils
+    - EMASRest
+  https://github.com/CocoaPods/Specs.git:
+    - AppAuth
+    - FBAEMKit
+    - FBSDKCoreKit
+    - FBSDKCoreKit_Basics
+    - FBSDKLoginKit
+    - FMDB
+    - GoogleSignIn
+    - GTMAppAuth
+    - GTMSessionFetcher
+    - libwebp
+    - Mantle
+    - OpenWeChatSDK
+    - SDWebImage
+    - SDWebImageWebPCoder
+    - TOCropViewController
+    - Weibo_SDK
+
+EXTERNAL SOURCES:
+  camera_avfoundation:
+    :path: ".symlinks/plugins/camera_avfoundation/ios"
+  device_info_plus:
+    :path: ".symlinks/plugins/device_info_plus/ios"
+  Flutter:
+    :path: Flutter
+  flutter_app_badger:
+    :path: ".symlinks/plugins/flutter_app_badger/ios"
+  flutter_image_compress:
+    :path: ".symlinks/plugins/flutter_image_compress/ios"
+  flutter_login_facebook:
+    :path: ".symlinks/plugins/flutter_login_facebook/ios"
+  fluwx:
+    :path: ".symlinks/plugins/fluwx/ios"
+  gallery_saver:
+    :path: ".symlinks/plugins/gallery_saver/ios"
+  google_sign_in_ios:
+    :path: ".symlinks/plugins/google_sign_in_ios/ios"
+  image_cropper:
+    :path: ".symlinks/plugins/image_cropper/ios"
+  image_gallery_saver:
+    :path: ".symlinks/plugins/image_gallery_saver/ios"
+  kooboo_flutter_app_upgrade:
+    :path: ".symlinks/plugins/kooboo_flutter_app_upgrade/ios"
+  package_by_walle:
+    :path: ".symlinks/plugins/package_by_walle/ios"
+  package_info_plus:
+    :path: ".symlinks/plugins/package_info_plus/ios"
+  path_provider_ios:
+    :path: ".symlinks/plugins/path_provider_ios/ios"
+  permission_handler_apple:
+    :path: ".symlinks/plugins/permission_handler_apple/ios"
+  photo_manager:
+    :path: ".symlinks/plugins/photo_manager/ios"
+  rammus:
+    :path: ".symlinks/plugins/rammus/ios"
+  shared_preferences_ios:
+    :path: ".symlinks/plugins/shared_preferences_ios/ios"
+  sign_in_with_apple:
+    :path: ".symlinks/plugins/sign_in_with_apple/ios"
+  sqflite:
+    :path: ".symlinks/plugins/sqflite/ios"
+  tencent_kit:
+    :path: ".symlinks/plugins/tencent_kit/ios"
+  tobias:
+    :path: ".symlinks/plugins/tobias/ios"
+  video_compress:
+    :path: ".symlinks/plugins/video_compress/ios"
+  video_player_avfoundation:
+    :path: ".symlinks/plugins/video_player_avfoundation/ios"
+  webview_flutter_wkwebview:
+    :path: ".symlinks/plugins/webview_flutter_wkwebview/ios"
+  weibo_kit:
+    :path: ".symlinks/plugins/weibo_kit/ios"
+
+SPEC CHECKSUMS:
+  AlicloudPush: bac1920532c576fd6f205e63d76733cb1179d221
+  AlicloudSender: 1f468b6bd962a099ffc19d45e3608b0fe98f259d
+  AlicloudUT: 6d1cf30d57d096b7e9bb4b069dd0ba6ad59a3338
+  AlicloudUTDID: 7323c443dcdf9a73e2224dc6ce51703671d7a765
+  AlicloudUtils: 66e0ba6ece62d7dd05e9dd95674b2c7811624c2f
+  AppAuth: 80317d99ac7ff2801a2f18ff86b48cd315ed465d
+  camera_avfoundation: 07c77549ea54ad95d8581be86617c094a46280d9
+  device_info_plus: e5c5da33f982a436e103237c0c85f9031142abed
+  EMASRest: 8df6f87836767a9415ad5cc4af739bc9d215b475
+  FBAEMKit: 955ca52eba8219c20f90774e8c6ff8bc7b3192a3
+  FBSDKCoreKit: 678f64eda3f0ff25c189c2ebbfe87b1d96a85a6d
+  FBSDKCoreKit_Basics: 6bee7c1f0932432901781203fa5e587ec5099148
+  FBSDKLoginKit: 56d55e23fe66a6db045826190b0b4dbc0e1ca0a0
+  Flutter: f04841e97a9d0b0a8025694d0796dd46242b2854
+  flutter_app_badger: b87fc231847b03b92ce1412aa351842e7e97932f
+  flutter_image_compress: fd2b476345226e1a10ea352fa306af95704642c1
+  flutter_login_facebook: a3fc23908d8554e5aa62a25999a1079c33272d54
+  fluwx: 79c66b6d795ab8208262ada215d9e60388cfe492
+  FMDB: 2ce00b547f966261cd18927a3ddb07cb6f3db82a
+  gallery_saver: 9fc173c9f4fcc48af53b2a9ebea1b643255be542
+  google_sign_in_ios: 90eec6616c4c2105b9f9fe5c774773d13565b504
+  GoogleSignIn: 3c68388ac221f379676e8f1cb115df3aaf73b93f
+  GTMAppAuth: 4d8f864896f3646f0c33baf38a28362f4c601e15
+  GTMSessionFetcher: 5595ec75acf5be50814f81e9189490412bad82ba
+  image_cropper: 60c2789d1f1a78c873235d4319ca0c34a69f2d98
+  image_gallery_saver: 259eab68fb271cfd57d599904f7acdc7832e7ef2
+  kooboo_flutter_app_upgrade: 0364462f39a3d59e0be1cbb52cf0ada813024ac7
+  libwebp: 98a37e597e40bfdb4c911fc98f2c53d0b12d05fc
+  Mantle: c5aa8794a29a022dfbbfc9799af95f477a69b62d
+  OpenWeChatSDK: 67375e7d4154c22f7ba6b1c334b121473e7d515c
+  package_by_walle: 95e30f9183c713216dcee639aaad33e341b4bb66
+  package_info_plus: 6c92f08e1f853dc01228d6f553146438dafcd14e
+  path_provider_ios: 14f3d2fd28c4fdb42f44e0f751d12861c43cee02
+  permission_handler_apple: 44366e37eaf29454a1e7b1b7d736c2cceaeb17ce
+  photo_manager: 4f6810b7dfc4feb03b461ac1a70dacf91fba7604
+  rammus: b742412b5535e367fce5c30b82d36c8fcb06271a
+  SDWebImage: 0327043dbb9533e75f2eff8445b3df0f2ceca6ac
+  SDWebImageWebPCoder: 908b83b6adda48effe7667cd2b7f78c897e5111d
+  shared_preferences_ios: 548a61f8053b9b8a49ac19c1ffbc8b92c50d68ad
+  sign_in_with_apple: f3bf75217ea4c2c8b91823f225d70230119b8440
+  sqflite: 6d358c025f5b867b29ed92fc697fd34924e11904
+  tencent_kit: 9db7aefcc6dd501bfa258b3d385cf4422701b9cd
+  tobias: 2aded9b83e3663b907360a800d8e3c13284f25c5
+  TOCropViewController: edfd4f25713d56905ad1e0b9f5be3fbe0f59c863
+  video_compress: fce97e4fb1dfd88175aa07d2ffc8a2f297f87fbe
+  video_player_avfoundation: e489aac24ef5cf7af82702979ed16f2a5ef84cff
+  webview_flutter_wkwebview: b7e70ef1ddded7e69c796c7390ee74180182971f
+  weibo_kit: 8064857ffe649258a0e813d94e4690cf4ef4d948
+  Weibo_SDK: 7478846cccb43c4785ba76b214115fb7ec9dc0d4
+
+PODFILE CHECKSUM: b24a19786ba1d2477dd4cd5c1c689ad771b61a7c
+
+COCOAPODS: 1.11.3

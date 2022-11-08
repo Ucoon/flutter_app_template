@@ -1,9 +1,9 @@
-import 'dart:io';
 import 'package:flutter/material.dart';
+import '/global.dart';
 import 'package:get/get.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../../../widget/widget.dart';
-import '../../../../common/utils/utils.dart';
+import '/widget/widget.dart';
+import '/common/utils/utils.dart';
 
 class ThirdPartnerLoginWidget extends StatelessWidget {
   final Function? thirdPartnerLoginCallback;
@@ -84,7 +84,7 @@ class ThirdPartnerLoginWidget extends StatelessWidget {
               color: Colors.black,
             ),
             onTap: () async {
-              if (Platform.isIOS) {
+              if (!Global.isIOS) {
                 toastInfo(msg: '仅限iOS使用');
                 return;
               }
