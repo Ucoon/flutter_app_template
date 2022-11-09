@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app_template/app/routes/app_pages.dart';
-import 'package:flutter_app_template/global.dart';
+import '/app/routes/app_pages.dart';
+import '/global.dart';
 import 'package:get/get.dart';
 import '../index.dart';
 

@@ -1,4 +1,3 @@
-
-abstract class IModel{
+abstract class IModel {
   void onClear();
 }

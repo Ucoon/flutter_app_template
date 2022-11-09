@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../../../global.dart';
-import '../../../base/controller/base_controller.dart';
+import '/global.dart';
+import '/app/base/controller/base_controller.dart';
 import 'js_bridge_model.dart';
 import '../widget/webview_jsbridge.dart';
 

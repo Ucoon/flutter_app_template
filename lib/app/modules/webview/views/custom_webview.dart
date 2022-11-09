@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../../../widget/widget.dart';
+import '/widget/widget.dart';
 import '../index.dart';
 
 class CustomWebPage<T extends JsBridgeController> extends GetView<T> {

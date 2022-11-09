@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app_template/common/utils/utils.dart';
+import '/common/utils/utils.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:carousel_pro_nullsafety/carousel_pro_nullsafety.dart'
     as my_carousel_comp;

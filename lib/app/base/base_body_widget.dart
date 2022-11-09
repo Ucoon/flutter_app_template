@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../widget/easy_refresh/src/empty_result_widget.dart';
-import '../../widget/loading_widget.dart';
+import '/widget/widget.dart';
 import 'controller/base_controller.dart';
 import 'model/enum.dart';
 

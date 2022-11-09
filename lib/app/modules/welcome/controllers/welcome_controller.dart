@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
-import '../../../../global.dart';
-import '../../../routes/app_pages.dart';
-import '../../../base/controller/base_controller.dart';
+import '/global.dart';
+import '/app/routes/app_pages.dart';
+import '/app/base/controller/base_controller.dart';
 import '../index.dart';
 
 class WelcomeController extends BaseController<WelcomeModel> {

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
-import '../../global.dart';
+import '/global.dart';
 import '../routes/app_pages.dart';
 
 /// 第一次欢迎页面

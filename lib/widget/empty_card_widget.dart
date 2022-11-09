@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app_template/common/values/values.dart';
+import '/common/values/values.dart';
 
 ///卡片式布局
 class EmptyCardWidget extends StatelessWidget {

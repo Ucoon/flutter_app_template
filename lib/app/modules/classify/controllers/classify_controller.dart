@@ -1,4 +1,4 @@
-import '../../../base/controller/base_controller.dart';
+import '/app/base/controller/base_controller.dart';
 import '../index.dart';
 
 class ClassifyController extends BaseController<ClassifyModel> {

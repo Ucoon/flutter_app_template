@@ -1,8 +1,8 @@
 import 'package:get/get.dart';
-import '../../../../global.dart';
-import '../../../../widget/toast.dart';
-import '../../../base/controller/base_controller.dart';
-import '../../../routes/app_pages.dart';
+import '/global.dart';
+import '/widget/widget.dart';
+import '/app/base/controller/base_controller.dart';
+import '/app/routes/app_pages.dart';
 import 'login_model.dart';
 import 'login_state.dart';
 

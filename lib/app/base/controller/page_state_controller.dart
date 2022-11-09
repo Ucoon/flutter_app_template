@@ -1,5 +1,4 @@
-import 'package:get/get_state_manager/src/simple/get_controllers.dart';
-
+import 'package:get/get.dart';
 import 'page_state.dart';
 
 class PageStateController extends GetxController {

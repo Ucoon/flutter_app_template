@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import '../global.dart';
+import '/global.dart';
 import '../widget/widget.dart';
 import 'net_exception.dart';
 

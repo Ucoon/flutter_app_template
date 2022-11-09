@@ -4,8 +4,7 @@ import 'package:get/get.dart';
 import 'package:quiver/strings.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tuple/tuple.dart';
-
-import '../../../../widget/widget.dart';
+import '/widget/widget.dart';
 
 class SMSCodeTextWidget extends StatefulWidget {
   final String phone;

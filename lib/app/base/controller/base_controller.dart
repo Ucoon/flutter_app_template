@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../../http/http_error.dart';
-import '../../../http/net_work.dart';
-import '../../../widget/loading_dialog.dart';
+import '/http/http_error.dart';
+import '/http/net_work.dart';
+import '/widget/widget.dart';
 import '../base_model.dart';
 import 'page_state.dart';
 
@@ -46,6 +46,7 @@ class BaseController<T extends BaseModel> extends GetxController {
       if (showLoadingIndicator) {
         Get.back();
       }
+
       ///错误所有的网络异常
       debugPrint("啥错误:${onError.toString()}");
       HttpError error = HttpError.checkNetError(onError);

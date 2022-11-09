@@ -1,6 +1,4 @@
 class WelcomeApiService {
-
-
   ///设备登陆
   static const String deviceLogin = '/device/login';
 

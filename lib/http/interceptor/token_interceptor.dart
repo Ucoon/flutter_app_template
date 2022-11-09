@@ -1,7 +1,7 @@
 import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import '../../global.dart';
+import '/global.dart';
 import '../http_error.dart';
 import '../net_work.dart';
 

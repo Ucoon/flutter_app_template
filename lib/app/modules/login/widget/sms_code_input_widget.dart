@@ -1,10 +1,9 @@
-import 'package:tuple/tuple.dart';
-import '../../../../widget/buttons.dart';
-import '../../../../widget/input.dart';
-import '../widget/sms_code_text_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:tuple/tuple.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '/widget/widget.dart';
+import '../widget/sms_code_text_widget.dart';
 
 class SmsCodeInputWidget extends StatefulWidget {
   final Future<Tuple2<String, String>> Function()? getGraphicCode; //获取图形验证码

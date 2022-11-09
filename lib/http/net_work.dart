@@ -8,7 +8,7 @@ import 'interceptor/local_log_interceptor.dart';
 import 'interceptor/token_interceptor.dart';
 import 'net_cancel_scope.dart';
 import 'net_exception.dart';
-import '../common/values/values.dart';
+import '/common/values/values.dart';
 
 /// 必须是顶层函数
 _parseAndDecode(String response) {

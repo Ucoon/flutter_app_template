@@ -1,6 +1,6 @@
 import 'dart:math';
-import '../../http/net_cancel_scope.dart';
-import '../../http/net_work.dart';
+import '/http/net_cancel_scope.dart';
+import '/http/net_work.dart';
 import 'base_i_model.dart';
 
 ///基础数据仓库层
@@ -14,7 +14,6 @@ class BaseModel implements IModel {
     tag = _randomBit(100);
     _cancelScope.key = tag;
     _apiService.cancelScope = _cancelScope;
-
   }
 
   @override
