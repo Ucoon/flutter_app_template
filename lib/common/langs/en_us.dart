@@ -1,4 +1,4 @@
-const enUs = <String, String>{
+const enUS = <String, String>{
   'login': 'Log in',
   'login_by_wechat': 'Continue with Wechat',
   'login_by_apple': 'Continue with Apple',

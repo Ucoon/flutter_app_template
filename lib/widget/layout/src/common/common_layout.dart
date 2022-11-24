@@ -81,11 +81,13 @@ class CommonLayoutPage<T extends BaseController> extends StatelessWidget {
         child: Container(
           color: backgroundColor,
           margin: margin,
-          child: BaseBodyWidget<T>(body(rootContext ?? context),
-              emptyIcon: emptyIcon,
-              emptyText: emptyText,
-              netErrorIcon: netErrorIcon,
-              onReload: onReload),
+          child: BaseBodyWidget<T>(
+            body(rootContext ?? context),
+            emptyIcon: emptyIcon,
+            emptyText: emptyText,
+            netErrorIcon: netErrorIcon,
+            onReload: onReload,
+          ),
         ),
       ),
       resizeToAvoidBottomInset: resizeToAvoidBottomInset,

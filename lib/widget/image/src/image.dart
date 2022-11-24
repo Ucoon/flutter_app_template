@@ -12,15 +12,16 @@ Widget loadImage(
   BoxFit fit = BoxFit.cover,
   Color? imageColor,
   BlendMode? colorBlendMode,
-  bool darkLoading = false,
-  double? loadingSize,
   Alignment? alignment,
-  Color? color,
   String placeholder = 'icon_place_logo',
 }) {
+  Widget placeHolder = getDefaultPlaceHolderWidget(
+    width: width ?? 64,
+    height: height ?? 64,
+    placeholder: placeholder,
+  );
   if (isBlank(url)) {
-    return getDefaultPlaceHolderWidget(
-        width: width ?? 64, height: height ?? 64);
+    return placeHolder;
   }
   return CachedNetworkImage(
     imageUrl: url,
@@ -33,12 +34,10 @@ Widget loadImage(
     alignment: alignment ?? Alignment.center,
     cacheManager: DefaultCacheManager(),
     placeholder: (context, url) {
-      return getDefaultPlaceHolderWidget(
-          width: width ?? 64, height: height ?? 64);
+      return placeHolder;
     },
     errorWidget: (context, url, error) {
-      return getDefaultPlaceHolderWidget(
-          width: width ?? 64, height: height ?? 64);
+      return placeHolder;
     },
   );
 }

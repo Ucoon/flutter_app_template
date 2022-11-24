@@ -105,7 +105,7 @@ class Global {
 
     var _locale = LocaleUtil.getAppLocale();
     if (isBlank(_locale)) {
-      LocaleUtil.saveAppLocale(const Locale('zh', 'HK'));
+      LocaleUtil.saveAppLocale(const Locale('zh', 'CN'));
     }
   }
 

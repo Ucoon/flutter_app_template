@@ -1,4 +1,4 @@
-const zhHans = <String, String>{
+const zhCN = <String, String>{
   'login': '登入',
   'login_by_wechat': '使用Wechat继续',
   'login_by_apple': '使用Apple继续',

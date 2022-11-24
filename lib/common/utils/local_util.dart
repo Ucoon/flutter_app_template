@@ -18,18 +18,18 @@ class LocaleUtil {
   static String getAppLang(Locale locale) {
     String code = locale.languageCode;
     if (code == 'zh') {
-      return 'zh-CN';
+      return 'zh_CN';
     }
     if (code == 'en') {
-      return 'en-US';
+      return 'en_US';
     }
-    return 'en-US';
+    return 'en_US';
   }
 
   static Locale getLocalLocale() {
     String? lang = getAppLocale();
-    if (lang == 'zh-CN') {
-      return const Locale('zh', 'HK');
+    if (lang == 'zh_CN') {
+      return const Locale('zh', 'CN');
     }
     return const Locale('en', 'US');
   }
