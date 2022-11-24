@@ -9,24 +9,25 @@ class CommonLayoutPage<T extends BaseController> extends StatelessWidget {
     this.body, {
     Key? key,
     this.title = '',
-    this.subTitle,
-    this.titleIcon,
-    this.appBarActions,
     this.margin = EdgeInsets.zero,
     this.appBarLeading,
     this.appBarBackgroundColor = Colors.white,
     this.backgroundColor = Colors.white,
-    this.onBack,
-    this.footer,
-    this.rootContext,
+    this.canBack = true,
+    this.pageState = true,
     this.appBarElevation = 0,
     this.resizeToAvoidBottomInset = false,
-    this.onLeaveConfirm,
-    this.canBack = true,
-    this.bottom,
     this.preferredHeight = 44,
     this.centerTitle = true,
     this.removeBottom = true,
+    this.subTitle,
+    this.titleIcon,
+    this.appBarActions,
+    this.onBack,
+    this.footer,
+    this.rootContext,
+    this.onLeaveConfirm,
+    this.bottom,
     this.emptyIcon,
     this.emptyText,
     this.netErrorIcon,
@@ -57,6 +58,7 @@ class CommonLayoutPage<T extends BaseController> extends StatelessWidget {
   final String? emptyText;
   final String? netErrorIcon;
   final VoidCallback? onReload;
+  final bool pageState;
 
   Widget _buildBody(BuildContext context, {VoidCallback? onBackConfirm}) {
     return Scaffold(
@@ -81,13 +83,15 @@ class CommonLayoutPage<T extends BaseController> extends StatelessWidget {
         child: Container(
           color: backgroundColor,
           margin: margin,
-          child: BaseBodyWidget<T>(
-            body(rootContext ?? context),
-            emptyIcon: emptyIcon,
-            emptyText: emptyText,
-            netErrorIcon: netErrorIcon,
-            onReload: onReload,
-          ),
+          child: pageState
+              ? BaseBodyWidget<T>(
+                  body(rootContext ?? context),
+                  emptyIcon: emptyIcon,
+                  emptyText: emptyText,
+                  netErrorIcon: netErrorIcon,
+                  onReload: onReload,
+                )
+              : body(rootContext ?? context),
         ),
       ),
       resizeToAvoidBottomInset: resizeToAvoidBottomInset,
