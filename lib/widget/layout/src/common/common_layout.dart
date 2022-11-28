@@ -32,6 +32,7 @@ class CommonLayoutPage<T extends BaseController> extends StatelessWidget {
     this.emptyText,
     this.netErrorIcon,
     this.onReload,
+    this.loading,
   }) : super(key: key);
 
   final Widget Function(BuildContext ctx) body;
@@ -58,6 +59,7 @@ class CommonLayoutPage<T extends BaseController> extends StatelessWidget {
   final String? emptyText;
   final String? netErrorIcon;
   final VoidCallback? onReload;
+  final Widget? loading;
   final bool pageState;
 
   Widget _buildBody(BuildContext context, {VoidCallback? onBackConfirm}) {
@@ -90,6 +92,7 @@ class CommonLayoutPage<T extends BaseController> extends StatelessWidget {
                   emptyText: emptyText,
                   netErrorIcon: netErrorIcon,
                   onReload: onReload,
+                  loading: loading,
                 )
               : body(rootContext ?? context),
         ),
