@@ -19,6 +19,7 @@ class WeChatKit {
 
   WeChatKit._internal();
 
+  ///[callback] state code errCode
   void setWeChatResponseEventHandler(Function? callback) {
     if (callback == null) return;
     _weChatResponseCallback = callback;
@@ -32,6 +33,11 @@ class WeChatKit {
   ///判断微信是否安装
   Future<bool> get isWeChatInstalledKit async {
     return fluwx.isWeChatInstalled;
+  }
+
+  ///判断是否注册了监听
+  bool get isRegisteredHandler {
+    return _weChatPayListener != null;
   }
 
   ///注册微信AppId

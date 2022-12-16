@@ -14,7 +14,6 @@ class CommonLayoutPage<T extends BaseController> extends StatelessWidget {
     this.appBarBackgroundColor = Colors.white,
     this.backgroundColor = Colors.white,
     this.canBack = true,
-    this.pageState = true,
     this.appBarElevation = 0,
     this.resizeToAvoidBottomInset = false,
     this.preferredHeight = 44,
@@ -60,7 +59,6 @@ class CommonLayoutPage<T extends BaseController> extends StatelessWidget {
   final String? netErrorIcon;
   final VoidCallback? onReload;
   final Widget? loading;
-  final bool pageState;
 
   Widget _buildBody(BuildContext context, {VoidCallback? onBackConfirm}) {
     return Scaffold(
@@ -85,16 +83,14 @@ class CommonLayoutPage<T extends BaseController> extends StatelessWidget {
         child: Container(
           color: backgroundColor,
           margin: margin,
-          child: pageState
-              ? BaseBodyWidget<T>(
+          child: BaseBodyWidget<T>(
                   body(rootContext ?? context),
                   emptyIcon: emptyIcon,
                   emptyText: emptyText,
                   netErrorIcon: netErrorIcon,
                   onReload: onReload,
                   loading: loading,
-                )
-              : body(rootContext ?? context),
+                ),
         ),
       ),
       resizeToAvoidBottomInset: resizeToAvoidBottomInset,

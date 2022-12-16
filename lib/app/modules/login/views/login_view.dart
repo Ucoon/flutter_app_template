@@ -49,8 +49,8 @@ class LoginPage extends GetView<LoginController> {
           height: 26.h,
         ),
         ThirdPartnerLoginWidget(
-          thirdPartnerLoginCallback: (ThirdPlatform platform, value) {
-            if (isBlank(value)) {
+          thirdPartnerLoginCallback: (ThirdPlatform platform, {String? token}) {
+            if (isBlank(token)) {
               toastInfo(msg: '${platform.name}${'login_failed'.tr}');
               return;
             }

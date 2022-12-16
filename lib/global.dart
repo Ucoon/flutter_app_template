@@ -89,8 +89,6 @@ class Global {
 
     // 读取设备第一次打开
     isFirstOpen = StorageUtil().getBool(storageDeviceFirstOpenKey);
-    isFirstOpen ??= true;
-
     var _token = StorageUtil().getJSON(storageTokenKey);
     if (!isBlank(_token)) {
       isOfflineLogin = false;

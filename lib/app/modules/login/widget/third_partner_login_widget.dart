@@ -1,16 +1,33 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
-import '/global.dart';
 import 'package:get/get.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '/widget/widget.dart';
 import '/common/utils/utils.dart';
 
-class ThirdPartnerLoginWidget extends StatelessWidget {
-  final Function? thirdPartnerLoginCallback;
+typedef ThirdPartnerLoginCallback = Function(ThirdPlatform thirdPlatform,
+    {String? token});
+
+class ThirdPartnerLoginWidget extends StatefulWidget {
+  final ThirdPartnerLoginCallback? thirdPartnerLoginCallback;
   const ThirdPartnerLoginWidget({
     Key? key,
     this.thirdPartnerLoginCallback,
   }) : super(key: key);
+
+  @override
+  _ThirdPartnerLoginWidgetState createState() =>
+      _ThirdPartnerLoginWidgetState();
+}
+
+class _ThirdPartnerLoginWidgetState extends State<ThirdPartnerLoginWidget> {
+  @override
+  void dispose() {
+    if (WeChatKit().isRegisteredHandler) {
+      WeChatKit().cancelWeChatResponseEventHandler();
+    }
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -70,7 +87,7 @@ class ThirdPartnerLoginWidget extends StatelessWidget {
             ),
             onTap: () async {
               String? idToken = await ThirdPlatformLogin().signIdWithFaceBook();
-              thirdPartnerLoginCallback?.call(ThirdPlatform.facebook, idToken);
+              _callback(ThirdPlatform.facebook, token: idToken);
             },
           ),
         ),
@@ -84,12 +101,12 @@ class ThirdPartnerLoginWidget extends StatelessWidget {
               color: Colors.black,
             ),
             onTap: () async {
-              if (!Global.isIOS) {
+              if (Platform.isIOS) {
                 toastInfo(msg: '仅限iOS使用');
                 return;
               }
               String? idToken = await ThirdPlatformLogin().signIdWithApple();
-              thirdPartnerLoginCallback?.call(ThirdPlatform.apple, idToken);
+              _callback(ThirdPlatform.apple, token: idToken);
             },
           ),
         ),
@@ -102,10 +119,7 @@ class ThirdPartnerLoginWidget extends StatelessWidget {
               size: 18.w,
               color: Colors.greenAccent,
             ),
-            onTap: () async {
-              await WeChatKit().loginByWeChat();
-              thirdPartnerLoginCallback?.call(ThirdPlatform.wechat, '');
-            },
+            onTap: _loginByWechat,
           ),
         ),
         Container(
@@ -119,11 +133,31 @@ class ThirdPartnerLoginWidget extends StatelessWidget {
             ),
             onTap: () async {
               String? idToken = await ThirdPlatformLogin().signInWithGoogle();
-              thirdPartnerLoginCallback?.call(ThirdPlatform.google, idToken);
+              _callback(ThirdPlatform.google, token: idToken);
             },
           ),
         ),
       ],
     );
+  }
+
+  void _loginByWechat() async {
+    WeChatKit().setWeChatResponseEventHandler((event) {
+      debugPrint(
+          '_ThirdPartnerLoginWidgetState._loginByWechat state: ${event.state}, code: ${event.code}');
+      switch (event.errCode) {
+        case WeChatKit.success: //登录成功
+          _callback(ThirdPlatform.wechat, token: event.code);
+          break;
+        default:
+          _callback(ThirdPlatform.wechat);
+          break;
+      }
+    });
+    await WeChatKit().loginByWeChat();
+  }
+
+  void _callback(ThirdPlatform thirdPlatform, {String? token}) {
+    widget.thirdPartnerLoginCallback?.call(thirdPlatform, token: token);
   }
 }
