@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class Badge extends StatelessWidget {
-  const Badge({
+class CustomBadge extends StatelessWidget {
+  const CustomBadge({
     Key? key,
     this.alignment = Alignment.topRight,
     this.childPadding = EdgeInsets.zero,
@@ -12,11 +12,11 @@ class Badge extends StatelessWidget {
     this.badgeBackground,
     this.borderRadius,
     this.badgePadding = const EdgeInsets.all(3),
-    this.badgeMargain,
+    this.badgeMargin,
   }) : super(key: key);
   final EdgeInsetsGeometry? childPadding;
   final EdgeInsetsGeometry? badgePadding;
-  final EdgeInsetsGeometry? badgeMargain;
+  final EdgeInsetsGeometry? badgeMargin;
   final Alignment alignment;
   final Widget child;
   final Widget? badgeContent;
@@ -34,7 +34,7 @@ class Badge extends StatelessWidget {
         Positioned.fill(
           child: Container(
             alignment: alignment,
-            margin: badgeMargain,
+            margin: badgeMargin,
             child: Material(
               shape: borderRadius != null ? null : shape,
               borderRadius: borderRadius,

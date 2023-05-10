@@ -44,11 +44,11 @@ class BadgeWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     String _num = count > 99 ? '99+' : count.toString();
     return isDot || count != 0
-        ? Badge(
+        ? CustomBadge(
             shape: shape,
             childPadding: childPadding,
             borderRadius: borderRadius,
-            badgeMargain: badgeMargain,
+            badgeMargin: badgeMargain,
             //  ?? BorderRadius.circular(9.r),
             // borderSide: borderSide ?? BorderSide.none,
             elevation: elevation,

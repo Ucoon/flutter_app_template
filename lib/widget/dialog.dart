@@ -91,7 +91,7 @@ Future<bool> showConfirm(
     builder: (ctx) {
       Widget child = Stack(
         children: <Widget>[
-          Badge(
+          CustomBadge(
             badgeBackground: Colors.transparent,
             childPadding: !showCloseButton ? null : EdgeInsets.all(27.w),
             badgeContent: !showCloseButton

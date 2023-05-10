@@ -22,6 +22,7 @@ class InnerScrollControllerWidget extends StatefulWidget {
 class _InnerScrollControllerWidgetState
     extends State<InnerScrollControllerWidget> {
   late InnerScrollController controller;
+
   @override
   void initState() {
     super.initState();
@@ -31,11 +32,11 @@ class _InnerScrollControllerWidgetState
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    var oldScrollController = PrimaryScrollController.of(context);
+    ScrollController oldScrollController = PrimaryScrollController.of(context);
     if (widget.controller != null) {
-      oldScrollController = widget.controller;
+      oldScrollController = widget.controller!;
     }
-    controller.updateParent(oldScrollController ?? ScrollController());
+    controller.updateParent(oldScrollController);
     controller.minExtent = 10.h;
   }
 
@@ -43,8 +44,7 @@ class _InnerScrollControllerWidgetState
   void didUpdateWidget(covariant InnerScrollControllerWidget oldWidget) {
     super.didUpdateWidget(oldWidget);
     var oldScrollController = PrimaryScrollController.of(context);
-    controller.updateParent(
-        widget.controller ?? oldScrollController ?? ScrollController());
+    controller.updateParent(widget.controller ?? oldScrollController);
   }
 
   @override
@@ -58,6 +58,7 @@ class _InnerScrollControllerWidgetState
 class InnerScrollController extends ScrollController {
   late ScrollController outerScrollCroller;
   final GlobalKey key = GlobalKey();
+
   @override
   ScrollPosition createScrollPosition(ScrollPhysics physics,
       ScrollContext context, ScrollPosition? oldPosition) {
@@ -81,14 +82,14 @@ class InnerScrollController extends ScrollController {
 
   RevealedOffset? get revealedOffset {
     return RenderAbstractViewport.of(key.currentContext!.findRenderObject())
-        ?.getOffsetToReveal(key.currentContext!.findRenderObject()!, 0);
+        .getOffsetToReveal(key.currentContext!.findRenderObject()!, 0);
   }
 
   Rect? showInScreen() {
     final object = key.currentContext!.findRenderObject()!;
 
     return RenderViewportBase.showInViewport(
-      viewport: RenderAbstractViewport.of(object)!,
+      viewport: RenderAbstractViewport.of(object),
       offset: positions.last,
     );
   }
@@ -193,6 +194,7 @@ class InnerScrollPosition extends ScrollPositionWithSingleContext {
   }
 
   ScrollDragController? _currentDrag;
+
   @override
   Drag drag(DragStartDetails details, VoidCallback dragCancelCallback) {
     if (outerScrollCroler.hasClients) {
@@ -219,6 +221,7 @@ class InnerScrollPosition extends ScrollPositionWithSingleContext {
   }
 
   double _heldPreviousVelocity = 0.0;
+
   @override
   ScrollHoldController hold(VoidCallback holdCancelCallback) {
     final double previousVelocity = activity!.velocity;
@@ -241,8 +244,10 @@ class InnerScrollPosition extends ScrollPositionWithSingleContext {
 
 class DragDelegate implements ScrollActivityDelegate {
   DragDelegate(this.delegate, this.outerPosition);
+
   final InnerScrollPosition delegate;
   final ScrollActivityDelegate outerPosition;
+
   @override
   void applyUserOffset(double delta) {
     delegate.applyUserOffset(delta);

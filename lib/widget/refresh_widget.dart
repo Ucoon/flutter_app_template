@@ -363,7 +363,7 @@ class RunningDelegate {
 
   void show() {
     if (_context != null && _refresh != null) {
-      final position = Scrollable.of(_context!)!.position;
+      final position = Scrollable.of(_context!).position;
       position.jumpTo(position.minScrollExtent);
       _refresh!
         .._setValue(maxExtent)
@@ -410,7 +410,7 @@ class _Refresh extends _RefreshBase {
       }
       if ((value > 0.0) && (scrollDelta > 0 || mes.extentBefore == 0.0)) {
         final newValue = (value - scrollDelta).clamp(0.0, maxExtent);
-        Scrollable.of(n.context!)!.position.correctBy(-scrollDelta);
+        Scrollable.of(n.context!).position.correctBy(-scrollDelta);
         _setValue(newValue);
       }
     }
@@ -451,7 +451,7 @@ class _Loading extends _RefreshBase {
       // }());
       final delta = value - oldValue;
       // loading widget 的高度增加，pixels 并没有增加, 调用下面的方法校准
-      Scrollable.of(n.context!)!.position.correctBy(delta);
+      Scrollable.of(n.context!).position.correctBy(delta);
     }
   }
 
@@ -793,7 +793,7 @@ class _RefreshLoadingWidgetState extends State<_RefreshLoadingWidget>
 
   @override
   Widget build(BuildContext context) {
-    final position = Scrollable.of(context)!.position;
+    final position = Scrollable.of(context).position;
     return AnimatedBuilder(
         animation: refreshBase,
         builder: (context, _) {
