@@ -379,4 +379,10 @@ class CameraPickerText implements CameraPickerTextDelegate {
   @override
   String sSwitchCameraLensDirectionLabel(CameraLensDirection value) =>
       'Switch to the ${sCameraLensDirectionLabel(value)} camera';
+
+  @override
+  String get loading => 'loading';
+
+  @override
+  String get saving => 'saving';
 }

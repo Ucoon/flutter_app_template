@@ -19,22 +19,21 @@ dependencies:
   flutter_screenutil: ^5.5.3+2
   flutter_easyrefresh: ^2.2.1
   flutter_easyloading: ^3.0.5
-  shared_preferences: ^2.0.15
+  shared_preferences: ^2.1.1
   device_info_plus: ^4.0.0
   package_info_plus: ^1.4.2
   kooboo_flutter_app_upgrade: ^0.0.9
   google_sign_in: ^5.3.3
   sign_in_with_apple: ^3.3.0
   flutter_login_facebook: ^1.4.1
-  permission_handler: ^9.2.0
+  permission_handler: ^10.2.0
   gallery_saver: ^2.3.2
   image_cropper: ^2.0.3
   video_compress: ^3.1.1
-  wechat_assets_picker: ^7.3.2
-  wechat_camera_picker: ^3.4.0
+  wechat_assets_picker: ^8.4.2
+  wechat_camera_picker: ^3.7.0
   flutter_image_compress: ^1.1.0
   cached_network_image: ^3.2.1
-  flutter_cache_manager: ^3.3.0
   waterfall_flow: ^3.0.2
   webview_flutter: ^3.0.4
   photo_view: ^0.14.0
