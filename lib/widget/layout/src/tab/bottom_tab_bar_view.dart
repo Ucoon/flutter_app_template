@@ -2,7 +2,7 @@ import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../../../common/utils/utils.dart';
+import '/common/utils/utils.dart';
 import 'round_underline_tab_indicator.dart';
 
 class TabOption {

@@ -33,6 +33,7 @@ export 'preference.dart';
 export 'rating_bar.dart';
 export 'refresh_widget.dart';
 export 'search_app_bar.dart';
+export 'second_tap_exit_app.dart';
 export 'switch_field.dart';
 export 'toast.dart';
 export 'uploader.dart';

@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
+import '/widget/second_tap_exit_app.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import '/common/utils/utils.dart';
-import '../../classify/index.dart';
-import '../../global/index.dart';
-import '../../home/index.dart';
-import '../../personal/index.dart';
+import '/app/modules/classify/index.dart';
+import '/app/modules/global/index.dart';
+import '/app/modules/home/index.dart';
+import '/app/modules/personal/index.dart';
 import '../index.dart';
 
 class TabHomePage extends StatefulWidget {
   const TabHomePage({Key? key}) : super(key: key);
+
   @override
   State<TabHomePage> createState() => TabHomePageState();
 }
@@ -112,8 +113,7 @@ class TabHomePageState extends State<TabHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
-      onWillPop: AppKit.exitApplication,
+    return SecondTapExitAppWidget(
       child: Scaffold(
         body: _buildPageView(),
         bottomNavigationBar: _buildBottomNavigationBar(),

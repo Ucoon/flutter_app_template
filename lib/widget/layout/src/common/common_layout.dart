@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../../../app/base/base_body_widget.dart';
-import '../../../../app/base/controller/base_controller.dart';
+import '/app/base/base_body_widget.dart';
+import '/app/base/controller/base_controller.dart';
 import 'app_bar.dart';
 
 class CommonLayoutPage<T extends BaseController> extends StatelessWidget {

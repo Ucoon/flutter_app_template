@@ -1,8 +1,8 @@
 import 'package:get/get.dart';
-import '../../classify/index.dart';
-import '../../global/index.dart';
-import '../../home/index.dart';
-import '../../personal/index.dart';
+import '/app/modules/classify/index.dart';
+import '/app/modules/global/index.dart';
+import '/app/modules/home/index.dart';
+import '/app/modules/personal/index.dart';
 import '../index.dart';
 
 class TabHomeBinding extends Bindings {

@@ -2,8 +2,7 @@ import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-import '../../../../common/values/values.dart';
+import '/common/values/values.dart';
 
 PreferredSize buildAppBar(
   BuildContext context,
@@ -81,11 +80,13 @@ PreferredSize buildAppBar(
 class DefaultAppBarLeadingWidget extends StatelessWidget {
   final Color? leadingIconColor;
   final VoidCallback? onBackClick;
+
   const DefaultAppBarLeadingWidget({
     Key? key,
     this.leadingIconColor,
     this.onBackClick,
   }) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Container(

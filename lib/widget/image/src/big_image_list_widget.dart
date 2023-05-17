@@ -7,11 +7,11 @@ import 'package:gallery_saver/files.dart';
 import 'package:get/get.dart';
 import 'package:photo_view/photo_view.dart';
 import 'package:photo_view/photo_view_gallery.dart';
-import '../../../common/utils/utils.dart';
-import '../../../common/values/values.dart';
-import '../../dashed_rect.dart';
+import '/common/utils/utils.dart';
+import '/common/values/values.dart';
+import '/widget/dashed_rect.dart';
+import '/widget/wrap_widget.dart';
 import '../image.dart';
-import '../../wrap_widget.dart';
 
 class BigImageListWidget extends StatelessWidget {
   final String imageUrl; //图片地址

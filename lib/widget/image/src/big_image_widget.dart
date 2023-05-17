@@ -7,7 +7,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gallery_saver/files.dart';
 import 'package:get/get.dart';
 import 'package:photo_view/photo_view.dart';
-import '../../loading_widget.dart';
+import '/widget/loading_widget.dart';
 
 void showBigImageDialog(BuildContext context, {String imageUrl = ''}) {
   Get.to(
