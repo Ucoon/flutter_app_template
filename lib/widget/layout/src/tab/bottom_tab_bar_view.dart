@@ -24,7 +24,7 @@ class TabOption {
   }
 }
 
-class BottomTabBarView extends StatelessWidget with PreferredSizeWidget {
+class BottomTabBarView extends StatelessWidget implements PreferredSizeWidget {
   final List<TabOption> tabs;
   final double indicatorWeight;
   final double indicatorWidth;
@@ -38,7 +38,7 @@ class BottomTabBarView extends StatelessWidget with PreferredSizeWidget {
   final TextStyle? unselectedLabelStyle;
   final Decoration? decoration;
 
-  BottomTabBarView({
+  const BottomTabBarView({
     Key? key,
     required this.tabs,
     this.showIndicator = true,
@@ -208,6 +208,10 @@ class _LayoutTextWithIconElement extends RenderObjectElement {
   void removeRenderObjectChild(
       covariant RenderBox child, covariant Object? slot) {
     renderObject.remove(child, slot);
+  }
+
+  @override
+  void moveRenderObjectChild(covariant RenderObject child, covariant Object? oldSlot, covariant Object? newSlot) {
   }
 }
 

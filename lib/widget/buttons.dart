@@ -125,12 +125,12 @@ class SecondaryButton extends StatelessWidget {
         ],
       ),
       style: ButtonStyle(
-        shape: MaterialStateProperty.all(
+        shape: WidgetStateProperty.all(
           RoundedRectangleBorder(borderRadius: borderRadius ?? borderRadius6),
         ),
-        side: MaterialStateProperty.all(
+        side: WidgetStateProperty.all(
             BorderSide(color: borderColor, width: 1.w)),
-        padding: MaterialStateProperty.all(
+        padding: WidgetStateProperty.all(
           padding ?? EdgeInsets.symmetric(vertical: 11.h),
         ),
       ),

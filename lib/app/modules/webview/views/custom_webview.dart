@@ -23,15 +23,17 @@ class CustomWebPage<T extends JsBridgeController> extends GetView<T> {
       _buildBody,
       title: title ?? '',
       canBack: isCanBack ?? true,
-      onLeaveConfirm: () async {
+      onLeaveConfirm: (bool didPop, Object? result) async {
         if (isCanBack == null) {
           if ((await controller.jsBridge.controller?.canGoBack()) ?? false) {
             controller.jsBridge.controller?.goBack();
-            return Future.value(false);
+            return;
           }
-          return Future.value(true);
+          Get.back();
         } else {
-          return Future.value(isCanBack);
+          if (isCanBack ?? false) {
+            Get.back();
+          }
         }
       },
       appBarBackgroundColor: Colors.white,

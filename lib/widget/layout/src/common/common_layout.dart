@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import '/app/base/base_body_widget.dart';
 import '/app/base/controller/base_controller.dart';
 import 'app_bar.dart';
@@ -43,7 +42,7 @@ class CommonLayoutPage<T extends BaseController> extends StatelessWidget {
   final Widget? footer;
   final EdgeInsetsGeometry margin;
   final VoidCallback? onBack;
-  final WillPopCallback? onLeaveConfirm;
+  final PopInvokedWithResultCallback? onLeaveConfirm;
   final bool resizeToAvoidBottomInset;
   final BuildContext? rootContext;
   final String title;
@@ -104,17 +103,15 @@ class CommonLayoutPage<T extends BaseController> extends StatelessWidget {
       return _buildBody(context);
     }
 
-    return WillPopScope(
+    return PopScope(
+      canPop: false,
+      onPopInvokedWithResult: onLeaveConfirm,
       child: _buildBody(
         context,
         onBackConfirm: () async {
-          final confirm = await onLeaveConfirm!();
-          if (confirm) {
-            Get.back();
-          }
+          onLeaveConfirm?.call(false, null);
         },
       ),
-      onWillPop: onLeaveConfirm,
     );
   }
 }

@@ -374,6 +374,10 @@ class FlowAlignElement extends RenderObjectElement {
     children.remove(solt);
     super.forgetChild(child);
   }
+
+  @override
+  void moveRenderObjectChild(covariant RenderObject child, covariant Object? oldSlot, covariant Object? newSlot) {
+  }
 }
 
 class RenderFlowAlign extends RenderBox {

@@ -156,10 +156,8 @@ Future<bool> showConfirm(
         child = Center(child: child);
       }
 
-      return WillPopScope(
-        onWillPop: () async {
-          return outsideDismiss;
-        },
+      return PopScope(
+        canPop: outsideDismiss,
         child: child,
       );
     },

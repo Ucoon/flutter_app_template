@@ -6,8 +6,4 @@ class GlobalPurchasingController extends BaseController<GlobalOrderModel> {
 
   GlobalPurchasingController(GlobalOrderModel model) : super(model);
 
-  @override
-  void onReady() {
-    super.onReady();
-  }
 }

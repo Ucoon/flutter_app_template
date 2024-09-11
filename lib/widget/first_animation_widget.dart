@@ -8,6 +8,7 @@ class FirstAnimationWidget extends StatefulWidget {
   }) : super(key: key);
   final Widget child;
   final VoidCallback callback;
+
   @override
   State<FirstAnimationWidget> createState() => _FirstAnimationWidgetState();
 }
@@ -15,6 +16,7 @@ class FirstAnimationWidget extends StatefulWidget {
 class _FirstAnimationWidgetState extends State<FirstAnimationWidget>
     with SingleTickerProviderStateMixin {
   late AnimationController controller;
+
   @override
   void initState() {
     super.initState();
@@ -30,10 +32,11 @@ class _FirstAnimationWidgetState extends State<FirstAnimationWidget>
   @override
   Widget build(BuildContext context) {
     final opacity = CurveTween(curve: Curves.easeInOut).animate(controller);
-    return WillPopScope(
-      onWillPop: () async {
+    return PopScope(
+      canPop: false,
+      onPopInvokedWithResult: (bool didPop, Object? result) async {
         widget.callback();
-        return true;
+        return;
       },
       child: FadeTransition(
         opacity: opacity,

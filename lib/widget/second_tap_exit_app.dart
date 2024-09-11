@@ -24,17 +24,18 @@ class _SecondTapExitAppWidgetState extends State<SecondTapExitAppWidget> {
     if (!Platform.isAndroid) {
       return widget.child;
     }
-    return WillPopScope(
-      onWillPop: () async {
+    return PopScope(
+      canPop: false,
+      onPopInvokedWithResult: (bool didPop, Object? result) async {
         if (_lastPopTime == null ||
             DateTime.now().difference(_lastPopTime!) >
                 const Duration(seconds: 2)) {
           //两次点击间隔超过2秒则重新计时
           _lastPopTime = DateTime.now();
           toastInfo(msg: "exit_app".tr);
-          return false;
+          return;
         }
-        return true;
+        Get.back();
       },
       child: widget.child,
     );

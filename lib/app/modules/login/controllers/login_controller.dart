@@ -11,10 +11,6 @@ class LoginController extends BaseController<LoginModel> {
 
   LoginController(LoginModel model) : super(model);
 
-  @override
-  void onReady() {
-    super.onReady();
-  }
 
   ///登录
   Future<void> login() async {
