@@ -1,6 +1,6 @@
 # flutter_app_template
 
-基于[GetX](https://pub.dev/packages/get)的Flutter开发模板(Flutter版本：3.7.10)
+基于[GetX](https://pub.dev/packages/get)的Flutter开发模板(Flutter版本：3.24.0)
 
 项目结构：
 
