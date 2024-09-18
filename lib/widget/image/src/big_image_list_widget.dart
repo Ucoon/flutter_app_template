@@ -3,7 +3,6 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:gallery_saver/files.dart';
 import 'package:get/get.dart';
 import 'package:photo_view/photo_view.dart';
 import 'package:photo_view/photo_view_gallery.dart';
@@ -51,7 +50,7 @@ class BigImageListWidget extends StatelessWidget {
       child: SizedBox(
         width: constraints?.maxWidth ?? 90.w,
         height: constraints?.maxHeight ?? 90.w,
-        child: isLocalFilePath(imageUrl)
+        child: PhotoCameraKit.isLocalFilePath(imageUrl)
             ? Image.file(
                 File(imageUrl),
                 fit: BoxFit.fill,
@@ -92,6 +91,7 @@ class _ImageWidgetState extends State<ImageWidget> {
   var _currentIndex = 0;
 
   late List<String> _images;
+
   @override
   void initState() {
     super.initState();
@@ -137,7 +137,7 @@ class _ImageWidgetState extends State<ImageWidget> {
                 enableRotation: true,
                 builder: (context, index) {
                   String url = _images[index];
-                  bool isLocalFile = isLocalFilePath(url);
+                  bool isLocalFile = PhotoCameraKit.isLocalFilePath(url);
                   ImageProvider localImageProvider = FileImage(File(url));
                   ImageProvider networkImageProvider =
                       CachedNetworkImageProvider(

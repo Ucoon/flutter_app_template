@@ -1,10 +1,10 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_app_template/common/utils/utils.dart';
 import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:gallery_saver/files.dart';
 import 'package:get/get.dart';
 import 'package:photo_view/photo_view.dart';
 import '/widget/loading_widget.dart';
@@ -29,7 +29,7 @@ class BigImageWidget extends StatelessWidget {
     Key? key,
     required this.imageUrl,
   }) : super(key: key) {
-    _isLocalFile = isLocalFilePath(imageUrl);
+    _isLocalFile = PhotoCameraKit.isLocalFilePath(imageUrl);
     _localImageProvider = FileImage(File(imageUrl));
     _networkImageProvider = CachedNetworkImageProvider(
       imageUrl,

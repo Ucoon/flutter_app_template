@@ -1,7 +1,6 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:gallery_saver/files.dart';
 import 'package:get/get.dart';
 import 'package:quiver/strings.dart';
 import 'dashed_rect.dart';
@@ -69,7 +68,7 @@ class _ImageUploaderWidgetState extends State<ImageUploaderWidget> {
   }
 
   Widget _renderImage(ImageModel it) {
-    if (!isBlank(it.localPreview) && isLocalFilePath(it.localPreview)) {
+    if (!isBlank(it.localPreview) && PhotoCameraKit.isLocalFilePath(it.localPreview)) {
       return Image.file(
         File(it.localPreview),
         fit: BoxFit.fill,

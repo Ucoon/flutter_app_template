@@ -1,13 +1,13 @@
 import 'dart:io';
 import 'dart:typed_data';
 import 'dart:ui' as ui show Image, ImageByteFormat;
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:gallery_saver/gallery_saver.dart';
 import 'package:get/get.dart';
 import 'package:image_cropper/image_cropper.dart';
-import 'package:image_gallery_saver/image_gallery_saver.dart';
+import 'package:image_gallery_saver_plus/image_gallery_saver_plus.dart';
 import 'package:video_compress/video_compress.dart';
 import 'package:wechat_assets_picker/wechat_assets_picker.dart';
 import 'package:wechat_camera_picker/wechat_camera_picker.dart';
@@ -94,13 +94,6 @@ class PhotoCameraKit {
     CroppedFile? croppedFile = await ImageCropper().cropImage(
       sourcePath: imagePath,
       compressQuality: 100,
-      aspectRatioPresets: [
-        CropAspectRatioPreset.square,
-        CropAspectRatioPreset.ratio3x2,
-        CropAspectRatioPreset.original,
-        CropAspectRatioPreset.ratio4x3,
-        CropAspectRatioPreset.ratio16x9,
-      ],
       uiSettings: [
         AndroidUiSettings(
           toolbarColor: const Color(0xFFFD9558),
@@ -108,15 +101,31 @@ class PhotoCameraKit {
           toolbarWidgetColor: Colors.white,
           initAspectRatio: CropAspectRatioPreset.original,
           lockAspectRatio: false,
+          aspectRatioPresets: [
+            CropAspectRatioPreset.square,
+            CropAspectRatioPreset.ratio3x2,
+            CropAspectRatioPreset.original,
+            CropAspectRatioPreset.ratio4x3,
+            CropAspectRatioPreset.ratio16x9,
+          ],
         ),
-        IOSUiSettings(minimumAspectRatio: 1.0),
+        IOSUiSettings(
+          minimumAspectRatio: 1.0,
+          aspectRatioPresets: [
+            CropAspectRatioPreset.square,
+            CropAspectRatioPreset.ratio3x2,
+            CropAspectRatioPreset.original,
+            CropAspectRatioPreset.ratio4x3,
+            CropAspectRatioPreset.ratio16x9,
+          ],
+        ),
       ],
     );
     pickCallBack(croppedFile);
   }
 
   ///图片压缩
-  static Future<File?> compressAndGetFile(String originFilePath) async {
+  static Future<XFile?> compressAndGetFile(String originFilePath) async {
     if (originFilePath.isEmpty) return null;
     bool jpgFile = true;
     int lastIndex = originFilePath.lastIndexOf(RegExp(r'.jp'));
@@ -126,7 +135,7 @@ class PhotoCameraKit {
     }
     final split = originFilePath.substring(0, (lastIndex));
     final outPath = '${split}_out${originFilePath.substring(lastIndex)}';
-    File? result = await FlutterImageCompress.compressAndGetFile(
+    XFile? result = await FlutterImageCompress.compressAndGetFile(
       originFilePath,
       outPath,
       quality: 60, //压缩百分比
@@ -296,6 +305,11 @@ class PhotoCameraKit {
     return null;
   }
 
+  static bool isLocalFilePath(String filePath) {
+    Uri uri = Uri.parse(filePath);
+    return !uri.scheme.contains('http');
+  }
+
   ///保存截图
   /// return file path
   static Future<String?> saveScreenShotImage(
@@ -305,7 +319,8 @@ class PhotoCameraKit {
     Uint8List? uint8List = await getCaptureSource(repaintKey);
     if (uint8List == null) return null;
     try {
-      final result = await ImageGallerySaver.saveImage(uint8List, quality: 100);
+      final result =
+          await ImageGallerySaverPlus.saveImage(uint8List, quality: 100);
       return result['filePath'];
     } catch (e) {
       return null;
@@ -313,8 +328,14 @@ class PhotoCameraKit {
   }
 
   ///保存网络图片
-  static Future<bool?> saveNetworkImage(String imageUrl) {
-    return GallerySaver.saveImage(imageUrl);
+  static Future<bool?> saveNetworkImage(String imageUrl,
+      {int quality = 60}) async {
+    var response = await Dio()
+        .get(imageUrl, options: Options(responseType: ResponseType.bytes));
+    return await ImageGallerySaverPlus.saveImage(
+      Uint8List.fromList(response.data),
+      quality: quality,
+    );
   }
 }
 

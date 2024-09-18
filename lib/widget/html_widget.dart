@@ -6,11 +6,9 @@ class HtmlWidget extends StatelessWidget {
     Key? key,
     required this.data,
     this.style = const {},
-    this.renders = const {},
   }) : super(key: key);
   final String data;
   final Map<String, Style> style;
-  final Map<CustomRenderMatcher, CustomRender> renders;
   @override
   Widget build(BuildContext context) {
     return Html(
@@ -18,7 +16,6 @@ class HtmlWidget extends StatelessWidget {
       data: data,
       style: style,
       shrinkWrap: true,
-      customRenders: renders,
     );
   }
 }
